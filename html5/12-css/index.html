@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>CSS</title>
+        <meta charset="utf-8">
+        <!-- Internal CSS -->
+        <style>
+            p {
+                color: lightcoral;
+            }
+
+            /* CSS Fonts */
+            h4 {
+                color: orange;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 150%;
+            }
+
+            /* CSS Border */
+            a {
+                border: 1px solid lightcoral;
+            }
+
+            /* CSS Padding */
+            div {
+                padding: 20px;
+            }
+
+            /* Using id */
+            #unique {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 30px;
+            }
+
+            /* Using class */
+            .share {
+                font-family: 'Lucida Sans';
+                color: goldenrod;
+            }
+        </style>
+
+        <!-- 
+            External CSS
+            An external style sheet is used to define the style for many HTML pages.
+            With an external style sheet, you can change the look of an entire web site, by changing one file!
+            To use an external style sheet, add a link to it in the <head> section of the HTML page:
+        -->
+        <link rel="stylesheet" href="style.css">
+        <!-- 
+            External References
+            External style sheets can be referenced with a full URL or with a path relative to the current web page.
+
+            This example uses a full URL to link to a style sheet:
+            <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
+        -->
+    </head>
+    <body>
+        <!-- 
+            Styling HTML with CSS
+
+            CSS stands for Cascading Style Sheets.
+            CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
+            CSS saves a lot of work. It can control the layout of multiple web pages all at once.
+            CSS can be added to HTML elements in 3 ways:
+        
+            Inline - by using the style attribute in HTML elements
+            Internal - by using a <style> element in the <head> section
+            External - by using an external CSS file
+            The most common way to add CSS, is to keep the styles in separate CSS files. However, here we will use inline and internal styling, because this is easier to demonstrate, and easier for you to try it yourself.
+        -->
+        <h1>Styling HTML with CSS</h1>
+
+        <!-- 
+            Inline CSS
+            An inline CSS is used to apply a unique style to a single HTML element.
+            An inline CSS uses the style attribute of an HTML element.
+            This example sets the text color of the <h1> element to blue: 
+        -->
+        <h2>Inline CSS</h2>
+        <h2 style="color:blue;">This is a blue heading</h2>
+
+        <!-- Internal CSS -->
+        <h2>Internal CSS</h2>
+        <p>This is a lightcoral paragraph</p>
+
+        <!-- External CSS -->
+        <h3>Getting the external style sheet</h3>
+
+
+        <!-- 
+            CSS Fonts
+            The CSS color property defines the text color to be used.
+            The CSS font-family property defines the font to be used.
+            The CSS font-size property defines the text size to be used. 
+        -->
+        <h4>CSS Fonts</h4>
+
+        <!-- 
+            CSS Border
+            The CSS border property defines a border around an HTML element: 
+        -->
+        <p>Testing <a>CSS Border</a></p>
+
+        <!-- 
+            CSS Padding
+            The CSS padding property defines a padding (space) between the text and the border: 
+        -->
+        <div style="border: 1px solid lightsalmon">padding: 20px;</div>
+
+        <!-- 
+            CSS Margin
+            The CSS margin property defines a margin (space) outside the border 
+        -->
+        <div style="padding: 0px; margin: 20px; border: 1px solid lightsalmon;">marging: 20px;</div>
+
+        <!-- 
+            The id attribute
+            To define a specific style for one special element, add an id attribute to the element: 
+        -->
+        <p id="unique">Using a identifier, It's unique</p>
+
+        <!-- 
+            The class attribute
+            To define a style for special types of elements, add a class attribute to the element: 
+        -->
+        <p class="share">Using a class, It's sharable</p>
+        <p class="share">Using a class, It's sharable</p>
+
+        
+        <!-- 
+            Chapter Summary
+            Use the HTML style attribute for inline styling
+            Use the HTML <style> element to define internal CSS
+            Use the HTML <link> element to refer to an external CSS file
+            Use the HTML <head> element to store <style> and <link> elements
+            Use the CSS color property for text colors
+            Use the CSS font-family property for text fonts
+            Use the CSS font-size property for text sizes
+            Use the CSS border property for borders
+            Use the CSS padding property for space inside the border
+            Use the CSS margin property for space outside the border 
+
+            HTML Style Tags
+            Tag	Description
+            <style>	Defines style information for an HTML document
+            <link>	Defines a link between a document and an external resource
+        -->
+    </body>
+</html>
