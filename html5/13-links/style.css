@@ -24,6 +24,16 @@
     text-decoration: underline;
 }
 
+.link-2:link, .link-2:visited {
+    color: goldenrod;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.link-2:hover {
+    color: rgb(139, 106, 23);
+}
+
 /* Buttons */
 
 .button:link, .button:visited {
@@ -37,4 +47,22 @@
 
 .button:hover, .button:active {
     background-color: rgb(165, 16, 46);
+}
+
+.button-2:link, .button-2:visited {
+    background-color: goldenrod;
+    color: #fff;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button-2:hover, .button-2:active {
+    background-color: rgb(139, 106, 23);
+}
+
+/* Bookmarks */
+.list {
+    list-style-type: none;
 }
