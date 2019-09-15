@@ -1,0 +1,33 @@
+/* 
+    HTML Table - Adding a Border
+    If you do not specify a border for the table, it will be displayed without borders.
+
+    A border is set using the CSS border property: 
+*/
+table {
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+}
+
+table#t01 {
+    width: 100%;
+    background-color: dimgray;
+}
+
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#t01 th {
+    color: white;
+    background-color: black;
+}
