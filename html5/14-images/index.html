@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Images</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>HTML Images</h1>
+        <p>Images can improve the design and the appearance of a web page.</p>
+        <!-- 
+            HTML Images Syntax
+            In HTML, images are defined with the <img> tag.
+            The <img> tag is empty, it contains attributes only, and does not have a closing tag.
+            The src attribute specifies the URL (web address) of the image:
+                <img src="url"> 
+
+            The alt Attribute
+            The alt attribute provides an alternate text for an image, if the user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader).
+
+            The value of the alt attribute should describe the image:
+        -->
+        <img class="image-1" src="image-1.jpg" alt="Mountain and Boreal Forest">
+        <img class="image-1"  src="image-2.jpg" alt="Mountain and Snow">
+        <img class="image-1"  src="image-3.jpg" alt="Mountain and Stars">
+
+        <p>If a browser cannot find an image, it will display the value of the alt attribute:</p>
+        <img src="image-4" alt="Image not found">
+        <p><i><b>Note:</b> The alt attribute is required. A web page will not validate correctly without it.</i></p>
+
+        <h2>Image Size - Width and Height</h2>
+        <!-- 
+            Image Size - Width and Height
+            You can use the style attribute to specify the width and height of an image. 
+        -->
+        <img class="width-4" src="img-1.png" alt="Image Icon">
+        <img class="width-3" src="img-1.png" alt="Image Icon">
+        <img class="width-2" src="img-1.png" alt="Image Icon">
+        <img class="width-1" src="img-1.png" alt="Image Icon">
+        
+        <h3>Width</h3>
+        <p class="width-1 height-1 color"></p>
+        <p class="width-2 height-1 color"></p>
+        <p class="width-3 height-1 color"></p>
+        <p class="width-4 height-1 color"></p>
+
+        <h3>height</h3>
+        <ul class="list-height">
+            <li class="width-1 height-1 color"></li>
+            <li class="width-1 height-2 color"></li>
+            <li class="width-1 height-3 color"></li>
+            <li class="width-1 height-4 color"></li>
+        </ul>
+
+        <p>The width and height attributes always defines the width and height of the image in pixels.</p>
+
+        <p><i><b>Note:</b> Always specify the width and height of an image. If width and height are not specified, the page might flicker while the image loads.</i></p>
+
+        <!-- 
+            Width and Height, or Style?
+            The width, height, and style attributes are valid in HTML.
+
+            However, we suggest using the style attribute. It prevents styles sheets from changing the size of images:
+        -->
+        <h2>Width and Height, or Style?</h2>
+        <img class="img-2" src="img-2.png" alt="Image Icon">
+        <img class="img-2" src="img-2.png" alt="Image Icon"  width="128" height="128">
+        <img class="img-2" src="img-2.png" alt="Image Icon" style="width:128px;height:128px;"><br>
+
+        <!-- 
+            Images in Another Folder
+            If not specified, the browser expects to find the image in the same folder as the web page.
+
+            However, it is common to store images in a sub-folder. You must then include the folder name in the src attribute:
+
+            Example
+            <img src="/images/html5.png" alt="HTML5 Icon"> 
+        -->
+        <h2>Images in Another Folder</h2>
+        <img src="img/html5.png" alt="HTML5 Icon">
+
+        <!-- 
+            Images on Another Server
+            Some web sites store their images on image servers.
+
+            Actually, you can access images from any web address in the world:
+
+            Example
+                <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"> 
+        -->
+        <h2>Images on Another Server</h2>
+        <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"><br>
+
+        <!-- 
+            Animated Images
+            HTML allows animated GIFs:
+
+            Example
+            <img src="programming.gif" alt="Computer Man" style="width:48px;height:48px;"> 
+        -->
+        <img src="img/loading.gif" alt="Loading" style="width: 200px;">
+    </body>
+</html>

@@ -1,0 +1,57 @@
+.image-1 {
+    margin: 0px;
+    padding: 0px;
+    width: 30%;
+    border: 4px solid slategray;
+}
+
+.width-1 {
+    width: 32px;
+}
+
+.width-2 {
+    width: 64px;
+}
+
+.width-3 {
+    width: 128px;
+}
+
+.width-4 {
+    width: 256px;
+}
+
+.height-1 {
+    height: 32px;
+}
+
+.height-2 {
+    height: 64px;
+}
+
+.height-3 {
+    height: 128px;
+}
+
+.height-4 {
+    height: 256px;
+}
+
+.color {
+    background-color: darkcyan;
+}
+
+.list-height {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.list-height li {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.img-2 {
+    width: 20%;
+}
