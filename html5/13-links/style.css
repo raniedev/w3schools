@@ -1,0 +1,40 @@
+/* Links */
+
+.link:link {
+    color: crimson;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.link:visited {
+    color: lightseagreen;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: lightcoral;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.link:active {
+    color: goldenrod;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Buttons */
+
+.button:link, .button:visited {
+    background-color: crimson;
+    color: #fff;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover, .button:active {
+    background-color: rgb(165, 16, 46);
+}

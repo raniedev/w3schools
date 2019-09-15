@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>CSS</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>HTML Links</h1>
+        <p>Links are found in nearly all web pages. Links allow users to click their way from page to page.</p>
+
+        <h2>HTML Links - Hyperlinks</h2>
+        <ul>
+            <li>HTML links are hyperlinks.</li>
+            <li>You can click on a link and jump to another document.</li>
+            <li>When you move the mouse over a link, the mouse arrow will turn into a little hand.</li>
+        </ul>
+        <p><i><b>Note:</b> A link does not have to be text. It can be an image or any other HTML element.</i></p>
+
+        <!--
+            HTML Links - Syntax
+            Hyperlinks are defined with the HTML <a> tag:
+                <a href="url">link text</a>
+        -->
+        <h2>HTML Links - Syntax</h2>
+        <a class="link" href="https://www.w3schools.com/html/">Visit our HTML tutorial</a>
+
+        <p>The href attribute specifies the destination address (https://www.w3schools.com/html/) of the link.</p>
+        <p>The <b>link text</b> is the visible part (Visit our HTML tutorial).</p>
+        <p>Clicking on the link text will send you to the specified address.</p>
+        <p><i><b>Note:</b> Without a forward slash at the end of subfolder addresses, you might generate two requests to the server. Many servers will automatically add a forward slash to the end of the address, and then create a new request.</i></p>
+
+        <h2>Local Links</h2>
+        <p>The example above used an absolute URL (a full web address).</p>
+
+        <p>A local link (link to the same web site) is specified with a relative URL (without https://www....).</p>
+        <a class="link" href="local-links.html">Local Links</a>
+
+        <h2>HTML Link Colors</h2>
+        <p>By default, a link will appear like this (in all browsers):</p>
+        <ul>
+            <li>An unvisited link is underlined and blue</li>
+            <li>A visited link is underlined and purple</li>
+            <li>An active link is underlined and red</li>
+        </ul>
+
+        <h3>Button Link</h3>
+        <p>Links are often styled as buttons, by using CSS:</p>
+        <a class="button" href="#Button1">Button</a>
+        <a class="button" href="#Button1">Button</a>
+
+        <h2>HTML Links - The target Attribute</h2>
+        <p>The target attribute specifies where to open the linked document.</p>
+        <p>The target attribute can have one of the following values:</p>
+        <ul>
+            <li>_blank - Opens the linked document in a new window or tab</li>
+            <li>_self - Opens the linked document in the same window/tab as it was clicked (this is default)</li>
+            <li>_parent - Opens the linked document in the parent frame</li>
+            <li>_top - Opens the linked document in the full body of the window</li>
+            <li>framename - Opens the linked document in a named frame</li>
+        </ul>
+        <p>This example will open the linked document in a new browser window/tab:</p>
+        <a class="link" href="https://www.google.com/" target="_blank">Google</a>
+        <p><b>Tip:</b> If your webpage is locked in a frame, you can use target="_top" to break out of the frame:</p>
+        <a class="link" href="https://www.youtube.com/" target="_top">Youtube</a>
+
+        <h2>HTML Links - Image as Link</h2>
+        <p>It is common to use images as links:</p>
+        <a href="#download">
+            <img src="download.png" alt="Download">
+        </a>
+
+        <h2>Link Titles</h2>
+        <p>The title attribute specifies extra information about an element. The information is most often shown as a tooltip text when the mouse moves over the element.</p>
+        <a class="link" href="#/register/" title="Register your account here.">Sing in</a>
+    </body>
+</html>
