@@ -1,0 +1,50 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+dl {
+    width: 100%;
+    border-bottom: 1px dotted black;
+}
+
+dt {
+    font-weight: bold;
+    border-top: 1px dotted black;
+    padding: 8px;
+}
+
+dd {
+    font-style: italic;
+    padding: 8px;
+}
+
+#horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+#horizontal li {
+    float: left;
+}
+
+#horizontal li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+#horizontal li a:hover {
+    background-color: #111111;
+}

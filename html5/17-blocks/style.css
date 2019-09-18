@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.eg-block {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.eg-inline {
+    color: crimson;
+}
