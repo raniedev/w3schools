@@ -1,0 +1,25 @@
+.cities {
+    background-color: black;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+span.note {
+    font-size: 120%;
+    color: red;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.city {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 10px;
+}
