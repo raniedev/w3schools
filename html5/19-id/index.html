@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>ID</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>HTML The id Attribute</h1>
+        <h2>Using The id Attribute</h2>
+        <p>The id attribute specifies a unique id for an HTML element (the value must be unique within the HTML document).</p>
+        <p>The id value can be used by CSS and JavaScript to perform certain tasks for the element with the specific id value.</p>
+        <p>In CSS, to select an element with a specific id, write a hash (#) character, followed by the id of the element:</p>
+        <h2 id="myHeader">My Header</h2>
+
+        <p><i><b>Tip:</b> The id attribute can be used on any HTML element.</i></p>
+        <p><i><b>Note:</b> The id value is case-sensitive.</i></p>
+        <p><i><b>Note:</b> The id value must contain at least one character, and must not contain whitespace (spaces, tabs, etc.).</i></p>
+
+        <h2>Difference Between Class and ID</h2>
+        <p>An HTML element can only have one unique id that belongs to that single element, while a class name can be used by multiple elements:</p>
+
+        <h2 id="myHeader">My Cities</h2>
+
+        <h2 class="city">Brazilia</h2>
+        <p>Brazilia is the capital of Brazil.</p>
+        <h2 class="city">London</h2>
+        <p>London is the capital of England.</p>
+        <h2 class="city">Tokyo</h2>
+        <p>Tokyo is the capital of Japan.</p>
+
+        <h2>Bookmarks with ID and Links</h2>
+        <p>HTML bookmarks are used to allow readers to jump to specific parts of a Web page.</p>
+        <p>Bookmarks can be useful if your webpage is very long.</p>
+        <p>To make a bookmark, you must first create the bookmark, and then add a link to it.</p>
+        <p>When the link is clicked, the page will scroll to the location with the bookmark.</p>
+        <div class="chapters">
+            <h2 id="C1">Chapter 1</h2>
+            <p>Paragraph 1</p>
+            <h2 id="C2">Chapter 2</h2>
+            <p>Paragraph 2</p>
+            <h2 id="C3">Chapter 3</h2>
+            <p>Paragraph 3</p>
+            <h2 id="C4">Chapter 4</h2>
+            <p>Paragraph 4</p>
+            <h2 id="C5">Chapter 5</h2>
+            <p>Paragraph 5</p>
+        </div>
+        <a href="#C1">Jump to Chapter 1</a><br>
+        <a href="chapters.html#C5">Jump to Chapter 5 in another page.</a>
+
+        <h2>Using The id Attribute in JavaScript</h2>
+        <p>JavaScript can access an element with a specified id by using the getElementById() method:</p>
+        <h2 id="changeHeader">Click on the button to change this header using javascript</h2>
+        <button onclick="displayResult()">Change</button>
+        <button id="reset" onclick="resetHeader()">Reset</button>
+        <script src="script.js"></script>
+    </body>
+</html>

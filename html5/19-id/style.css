@@ -1,0 +1,28 @@
+#myHeader {
+    background-color: lightblue;
+    color: black;
+    padding: 40px;
+    text-align: center;
+}
+
+.city {
+    background-color: cadetblue;
+    color: white;
+    padding: 10px;
+}
+
+.chapters p {
+    margin-bottom: 100px;
+}
+
+a {
+    color: lightseagreen;
+}
+
+a:visited {
+    color: lightseagreen;
+}
+
+#reset {
+    visibility: hidden;
+}
