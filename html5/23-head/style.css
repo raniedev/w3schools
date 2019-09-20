@@ -1,0 +1,13 @@
+.exempli-gratia {
+    color: royalblue;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Head</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="HTML5,CSS3,JavaScript6">
+        <meta name="author" content="Ranie">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <base href="https://www.w3schools.com/images/" target="_blank">
+    </head>
+    <body>
+        <h1>HTML Head</h1>
+        <h2>The HTML <head> Element</h2>
+        <p>The &lt;head&gt; element is a container for metadata (data about data) and is placed between the &lt;html&gt; tag and the &lt;body&gt; tag.</p>
+        <p>HTML metadata is data about the HTML document. Metadata is not displayed.</p>
+        <p>Metadata typically define the document title, character set, styles, scripts, and other meta information.</p>
+        <p>The following tags describe metadata: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;, and &lt;base&gt;.</p>
+
+        <h2>The HTML &lt;title&gt; Element</h2>
+        <p>The &lt;title&gt; element defines the title of the document, and is required in all HTML documents.</p>
+        <p>The &lt;title&gt; element:</p>
+        <ul>
+            <li>defines a title in the browser tab</li>
+            <li>provides a title for the page when it is added to favorites</li>
+            <li>displays a title for the page in search engine results</li>
+        </ul>
+        <p>A simple HTML document:</p>
+        <i class="exempli-gratia">&lt;html&gt;<br>
+            &lt;head&gt;<br>
+                &lt;title&gt;Title name&lt;/title&gt;<br>
+            &lt;/head&gt;<br>
+            &lt;body&gt;<br>
+                ...<br>
+            &lt;/body&gt;<br>
+        &lt;/html&gt;</i>
+        
+        <h2>The HTML &lt;style&gt; Element</h2>
+        <p>The &lt;style&gt; element is used to define style information for a single HTML page:</p>
+        <i class="exempli-gratia">&lt;style&gt;<br>
+            body {background-color: powderblue;}<br>
+            h1 {color: red;}<br>
+            p {color: blue;}<br>
+        &lt;/style&gt;</i>
+
+        <h2>The HTML &lt;link&gt; Element</h2>
+        <p>The &lt;link&gt; element is used to link to external style sheets:</p>
+        <i class="exempli-gratia">&lt;link rel="stylesheet" href="mystyle.css"&gt;</i>
+
+        <h2>The HTML &lt;meta&gt; Element</h2>
+        <p>The &lt;meta&gt; element is used to specify which character set is used, page description, keywords, author, and other metadata.</p>
+        <p>Metadata is used by browsers (how to display content), by search engines (keywords), and other web services.</p>
+        
+        <p>Define the character set used:</p>
+        <i class="exempli-gratia">&lt;meta charset="utf-8"&gt;</i>
+        
+        <p>Define a description of your web page:</p>
+        <i class="exempli-gratia">&lt;meta name="description" content="Free Web tutorials"&gt;</i>
+        
+        <p>Define keywords for search engines:</p>
+        <i class="exempli-gratia">&lt;meta name="keywords" content="HTML, CSS, XML, JavaScript"&gt;</i>
+
+        <p>Define the author of a page:</p>
+        <i class="exempli-gratia">&lt;meta name="author" content="John Doe"&gt;</i>
+
+        <p>Refresh document every 30 seconds:</p>
+        <i class="exempli-gratia">&lt;meta http-equiv="refresh" content="30"&gt;</i>
+
+
+        <h2>Setting The Viewport</h2>
+        <p>HTML5 introduced a method to let web designers take control over the viewport, through the &lt;meta&gt; tag.</p>
+        <p>The viewport is the user's visible area of a web page. It varies with the device, and will be smaller on a mobile phone than on a computer screen.</p>
+        <p>You should include the following &lt;meta&gt; viewport element in all your web pages:</p>
+        <p>A &lt;meta&gt; viewport element gives the browser instructions on how to control the page's dimensions and scaling.</p>
+        <p>The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).</p>
+        <p>The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.</p>
+        <p>Here is an example of a web page without the viewport meta tag, and the same web page with the viewport &lt;meta&gt; tag:</p>
+        <p><i><b>Tip:</b> If you are browsing this page with a phone or a tablet, you can click on the two links below to see the difference.</i></p>
+
+        <h2>The HTML &lt;script&gt; Element</h2>
+        <p>The &lt;script&gt; element is used to define client-side JavaScripts.</p>
+        <p>This JavaScript writes "Hello JavaScript!" into an HTML element with id="demo":</p>
+        <i class="exempli-gratia">&lt;script&gt;<br>
+            function myFunction {<br>
+                document.getElementById("demo").innerHTML = "Hello JavaScript!";<br>
+            }<br>
+        &lt;/script&gt;</i>
+        <p id="demo"></p>
+
+        <h2>The HTML &lt;base&gt; Element</h2>
+        <p>The &lt;base&gt; element specifies the base URL and base target for all relative URLs in a page:</p>
+        
+
+        <h2>Omitting &lt;html&gt;, &lt;head&gt; and &lt;body&gt;?</h2>
+        <p>According to the HTML5 standard; the &lt;html&gt;, the &lt;body&gt;, and the &lt;head&gt; tag can be omitted.</p>
+        <p>The following code will validate as HTML5:</p>
+
+        <i class="exempli-gratia">&lt;!DOCTYPE html&gt;<br>
+        &lt;title&gt;Page Title&lt;/title&gt;<br>
+        <br>
+        &lt;h1&gt;This is a heading&lt;/h1&gt;<br>
+        &lt;p&gt;This is a paragraph.&lt;/p&gt;<br></i>
+
+        
+        <p><i><b>Note:</b> W3Schools does not recommend omitting the &lt;html&gt; and &lt;body&gt; tags. Omitting these tags can crash DOM or XML software and produce errors in older browsers (IE9).</i></p>
+
+        <p><i>However, omitting the &lt;head&gt; tag has been a common practice for quite some time now.</i></p>
+
+        <h2>HTML head Elements</h2>
+        <table>
+            <tr>
+                
+                <th>Tag</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>&lt;head&gt;</td>
+                <td>Defines information about the document</td>
+            </tr>
+            <tr>
+                <td>&lt;title&gt;</td>
+                <td>Defines the title of a document</td>
+            </tr>
+            <tr>    
+                <td>&lt;base&gt;</td>
+                <td>Defines a default address or a default target for all links on a page</td>
+            </tr>
+            <tr>    
+                <td>&lt;link&gt;</td>
+                <td>Defines the relationship between a document and an external resource</td>
+            </tr>
+            <tr>
+                <td>&lt;meta&gt;</td>
+                <td>Defines metadata about an HTML document</td>
+            </tr>
+            <tr>
+                <td>&lt;script&gt;</td>
+                <td>Defines a client-side script</td>
+            </tr>
+            <tr>
+                <td>&lt;style&gt;</td>
+                <td>Defines style information for a document</td>
+            </tr>
+        </table>
+
+        <script src="script.js"></script>
+    </body>
+</html>

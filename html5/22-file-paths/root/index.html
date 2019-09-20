@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>File Paths</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>HTML File Paths</h1>
+        <table>
+            <tr>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>&lt;img src="picture.jpg"&gt;</td>
+                <td>picture.jpg is located in the same folder as the current page</td>
+            </tr>
+            <tr>
+                <td>&lt;img src="images/picture.jpg"&gt;</td>
+                <td>picture.jpg is located in the images folder in the current folder</td>
+            </tr>
+            <tr>
+                <td>&lt;img src="/images/picture.jpg"&gt;</td>
+                <td>picture.jpg is located in the images folder at the root of the current web</td>
+            </tr>
+            <tr>
+                <td>&lt;img src="../picture.jpg"&gt;</td>
+                <td>picture.jpg is located in the folder one level up from the current folder</td>
+            </tr>
+        </table>
+        
+        <h2>Relative File Paths</h2>
+        <p>A relative file path points to a file relative to the current page.</p>
+        <p>In this example, the file path points to a file in the images folder located at the root of the current web:</p>
+        <h3>src="/images/paris.jpg"</h3>
+        <img src="/images/paris.jpg" alt="Paris city">
+        <p><i><b>Obs.:</b> It's work in web only.</i></p>
+        
+        <p>In this example, the file path points to a file in the images folder located in the current folder:</p>
+        <h3>src="images/rio-de-janeiro.jpg"</h3>
+        <img src="images/rio-de-janeiro.jpg" alt="Rio de Janeiro city">
+
+        <p>In this example, the file path points to a file in the images folder located in the current folder:</p>
+        <h3>src="new-york.jpg"</h3>
+        <img src="new-york.jpg" alt="New York city"><br>
+
+        <p>In this example, the file path points to a file in the images folder located in the folder one level above the current folder:</p>
+        <h3>src="../tokyo.jpg"</h3>
+        <img src="../tokyo.jpg" alt="Tokyo city">
+
+        <h2>Best Practice</h2>
+        <p>It is best practice to use relative file paths (if possible).</p>
+        <p>When using relative file paths, your web pages will not be bound to your current base URL. All links will work on your own computer (localhost) as well as on your current public domain and your future public domains.</p>
+        <script src="script.js"></script>
+    </body>
+</html>
