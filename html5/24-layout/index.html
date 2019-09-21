@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Layout</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>HTML Layouts</h1>
+        <h2>HTML Layout Elements</h2>
+        <p>Websites often display content in multiple columns (like a magazine or newspaper).</p>
+        <p>HTML offers several semantic elements that define the different parts of a web page:</p>
+        <table>
+            <tr>
+                <td colspan="2">&lt;header&gt;</td>
+            </tr>
+            <tr>
+                <td colspan="2">&lt;nav&gt;</td>
+            </tr>
+            <tr>
+                <td>&lt;section&gt;</td>
+                <td rowspan="2">&lt;aside&gt;</td>
+            </tr>
+            <tr>
+                <td>&lt;article&gt;</td>
+            </tr>
+            <tr>
+                <td colspan="2">&lt;footer&gt;</td>
+            </tr>
+        </table>
+        <ul>
+            <li>&lt;header&gt; - Defines a header for a document or a section</li>
+            <li>&lt;nav&gt; - Defines a container for navigation links</li>
+            <li>&lt;section&gt; - Defines a section in a document</li>
+            <li>&lt;article&gt; - Defines an independent self-contained article</li>
+            <li>&lt;aside&gt; - Defines content aside from the content (like a sidebar)</li>
+            <li>&lt;footer&gt; - Defines a footer for a document or a section</li>
+            <li>&lt;details&gt; - Defines additional details</li>
+            <li>&lt;summary&gt; - Defines a heading for the &lt;details&gt; element</li>
+        </ul>
+
+        <h2>HTML Layout Techniques</h2>
+        <p>There are five different ways to create multicolumn layouts. Each way has its pros and cons:</p>
+        <ul>
+            <li>HTML tables (not recommended)</li>
+            <li>CSS float property</li>
+            <li>CSS flexbox</li>
+            <li>CSS framework</li>
+            <li>CSS grid</li>
+        </ul>
+        
+        <h2>Which One to Choose?</h2>
+        <h3>HTML Tables</h3>
+        <p>The &lt;table&gt; element was not designed to be a layout tool! The purpose of the &lt;table&gt; element is to display tabular data. So, do not use tables for your page layout! They will bring a mess into your code. And imagine how hard it will be to redesign your site after a couple of months.</p>
+
+        <p class="comment"><b>Tip:</b> Do NOT use tables for your page layout!</p>
+
+        <h3>CSS Frameworks</h3>
+        <p>If you want to create your layout fast, you can use a framework, like W3.CSS or Bootstrap.</p>
+
+        <h3>CSS Floats</h3>
+        <p>It is common to do entire web layouts using the CSS float property. Float is easy to learn - you just need to remember how the float and clear properties work. <strong>Disadvantages:</strong> Floating elements are tied to the document flow, which may harm the flexibility.</p>
+
+        <h3>CSS Flexbox</h3>
+        <p>Flexbox is a new layout mode in CSS3.</p>
+        <p>Use of flexbox ensures that elements behave predictably when the page layout must accommodate different screen sizes and different display devices. <strong>Disadvantages:</strong> Does not work in IE10 and earlier.</p>
+
+        <h3>CSS Grid View</h3>
+        <p>The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages without having to use floats and positioning.</p>
+        <p><strong>Disadvantages:</strong> Does not work in IE nor in Edge 15 and earlier.</p>
+
+        <script src="script.js"></script>
+    </body>
+</html>
