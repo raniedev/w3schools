@@ -1,0 +1,12 @@
+/* 
+    The @charset CSS Rule
+    You can use the CSS @charset rule to specify the character encoding used in a style sheet:
+
+    Example
+    Set the encoding of the style sheet to Unicode UTF-8:
+*/
+@charset "utf-8";
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}

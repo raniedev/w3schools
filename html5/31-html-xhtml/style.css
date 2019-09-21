@@ -1,0 +1,11 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+code {
+    color: seagreen;
+}
+
+a, a:visited {
+    color: royalblue;
+}
