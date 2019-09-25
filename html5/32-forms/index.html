@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Forms</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <h1>HTML Forms</h1>
+        <h2>The &lt;form&gt; Element</h2>
+        <p>The HTML &lt;form&gt; element defines a form that is used to collect user input:</p>
+
+        <p class="eg">
+            &lt;form&gt;<br>
+            .<br>
+            form elements<br>
+            .<br>
+            &lt;/form&gt;<br>
+        </p>
+
+        <p>An HTML form contains form elements.</p>
+        <p>Form elements are different types of input elements, like text fields, checkboxes, radio buttons, submit buttons, and more.</p>
+
+        <h2>The &lt;input&gt; Element</h2>
+        <p>The &lt;input&gt; element is the most important form element.</p>
+        <p>The &lt;input&gt; element can be displayed in several ways, depending on the type attribute. Here are some examples:</p>
+
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>&lt;input type="text"&gt;</td>
+                <td>Defines a one-line text input field</td>
+            </tr>
+            <tr>
+                <td>&lt;input type="radio"&gt;</td>
+                <td>Defines a radio button (for selecting one of many choices)</td>
+            </tr>
+            <tr>
+                <td>&lt;input type="submit"&gt;</td>
+                <td>Defines a submit button (for submitting the form)</td>
+            </tr>
+        </table>
+
+        <h2>Text Input</h2>
+        <p>&lt;input type="text"&gt; defines a one-line input field for text input:</p>
+        <form>
+            First name:<br>
+            <input type="text" name="firstname"><br>
+            Last name:<br>
+            <input type="text" name="lastname">
+        </form>
+        <p><i><strong class="alert">Note:</strong> The form itself is not visible. Also note that the default width of a text field is 20 characters.</i></p>
+
+        <h2>Radio Button Input</h2>
+        <p>&lt;input type="radio"&gt; defines a radio button.</p>
+        <p>Radio buttons let a user select ONE of a limited number of choices:</p>
+
+        <form>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other
+        </form>
+
+        <h2>The Submit Button</h2>
+        <p>&lt;input type="submit"&gt; defines a button for submitting the form data to a form-handler.</p>
+        <p>The form-handler is typically a server page with a script for processing input data.</p>
+        <p>The form-handler is specified in the form's action attribute:</p>
+
+        <form action="/action_page.php">
+            First name:<br>
+            <input type="text" name="firstname" value="Mickey"><br>
+            Last name:<br>
+            <input type="text" name="lastname" value="Mouse"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <h2>The Action Attribute</h2>
+        <p>The action attribute defines the action to be performed when the form is submitted.</p>
+        Normally, the form data is sent to a web page on the server when the user clicks on the submit button.</p>
+        <p>In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data:</p>
+        <p class="eg">&lt;form action="/action_page.php"&gt;&lt;/form&gt;</p>
+        <p>If the action attribute is omitted, the action is set to the current page.</p>
+
+        <h2>The Target Attribute</h2>
+        <p>The target attribute specifies if the submitted result will open in a new browser tab, a frame, or in the current window.</p>
+        <p>The default value is "_self" which means the form will be submitted in the current window.</p>
+        <p>To make the form result open in a new browser tab, use the value "_blank":</p>
+        <p class="eg">&lt;form action="/action_page.php" target="_blank"&gt;&lt;/form&gt;</p>
+
+        <p>Other legal values are <span class="alert">"_parent"</span>, <span class="alert">"_top"</span>, or a name representing the name of an iframe.</p>
+
+        <h2>The Method Attribute</h2>
+        <p>The method attribute specifies the HTTP method (<b>GET</b> or <b>POST</b>) to be used when submitting the form data:</p>
+        <p class="eg">&lt;form action="/action_page.php" method="get"&gt;&lt;/form&gt;</p>
+        <p>or:</p>
+        <p class="eg">&lt;form action="/action_page.php" method="post"&gt;&lt;/form&gt;</p>
+
+        <h2>When to Use GET?</h2>
+        <p>The default method when submitting form data is GET.</p>
+        <p>However, when GET is used, the submitted form data will be visible in the page address field:</p>
+        <p class="eg">/action_page.php?firstname=Mickey&lastname=Mouse</p>
+
+        <h3>Notes on GET:</h3>
+        <ul>
+            <li>Appends form-data into the URL in name/value pairs</li>
+            <li>The length of a URL is limited (about 3000 characters)</li>
+            <li>Never use GET to send sensitive data! (will be visible in the URL)</li>
+            <li>Useful for form submissions where a user wants to bookmark the result</li>
+            <li>GET is better for non-secure data, like query strings in Google</li>
+        </ul>
+        
+        <h2>When to Use POST?</h2>
+        <p>Always use POST if the form data contains sensitive or personal information. The POST method does not display the submitted form data in the page address field.</p>
+
+        <h3>Notes on POST:</h3>
+        <ul>
+            <li>POST has no size limitations, and can be used to send large amounts of data.</li>
+            <li>Form submissions with POST cannot be bookmarked</li>
+        </ul>
+        
+        <h2>The Name Attribute</h2>
+        <p>Each input field must have a name attribute to be submitted.</p>
+        <p>If the name attribute is omitted, the data of that input field will not be sent at all.</p>
+        <p>This example will only submit the "Last name" input field:</p>
+        <form action="/action_page.php">
+            First name:<br>
+            <input type="text" value="Mickey"><br>
+            Last name:<br>
+            <input type="text" name="lastname" value="Mouse"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        
+        <h2>Grouping Form Data with &lt;fieldset&gt;</h2>
+        <p>The &lt;fieldset&gt; element is used to group related data in a form.</p>           
+        <p>The &lt;legend&gt; element defines a caption for the &lt;fieldset&gt; element.</p>
+        <form action="/action_page.php">
+            <fieldset>
+              <legend>Personal information:</legend>
+              First name:<br>
+              <input type="text" name="firstname" value="Mickey"><br>
+              Last name:<br>
+              <input type="text" name="lastname" value="Mouse"><br><br>
+              <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+        
+
+        <p>Here is the list of all &lt;form&gt; attributes:</p>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>accept-charset</td>
+                <td>Specifies the charset used in the submitted form (default: the page charset).</td>
+            </tr>
+            <tr>
+                <td>action</td>
+                <td>Specifies an address (url) where to submit the form (default: the submitting page).</td>
+            </tr>
+            <tr>
+                <td>autocomplete</td>
+                <td>Specifies if the browser should autocomplete the form (default: on).</td>
+            </tr>
+            <tr>
+                <td>enctype</td>
+                <td>Specifies the encoding of the submitted data (default: is url-encoded).</td>
+            </tr>
+            <tr>
+                <td>method</td>
+                <td>Specifies the HTTP method used when submitting the form (default: GET).</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Specifies a name used to identify the form (for DOM usage: document.forms.name).</td>
+            </tr>
+            <tr>
+                <td>novalidate</td>
+                <td>Specifies that the browser should not validate the form.</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td>Specifies the target of the address in the action attribute (default: _self).</td>
+            </tr>
+        </table>
+        <script src="script.js"></script>
+    </body>
+</html>
