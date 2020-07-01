@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Input Attributes</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <h1>HTML Input Attributes</h1>
+        <p>This chapter describes the different attributes for the HTML &lt;input&gt; element.</p>
+
+        <h2>The Value Attribute</h2>
+        <p>The input value attribute specifies an initial value for an input field:</p>
+        <h3>Example</h3>
+        <p>Input fields with initial (default) values:</p>
+        <form>
+            <label for="fname">First name:</label><br/>
+            <input type="text" id="fname" name="fname" value="John"/><br/>
+            <label for="lname">Last name:</label><br/>
+            <input type="text" id="lname" name="lname" value="Doe"/>
+        </form>
+
+        <h2>The Readonly Attribute</h2>
+        <p>The input readonly attribute specifies that an input field is read-only.</p>
+        <p>A read-only input field cannot be modified (however, a user can tab to it, highlight it, and copy the text from it).</p>
+        <p>The value of a read-only input field will be sent when submitting the form!</p>
+        <h3>Example</h3>
+        <p>A read-only input field:</p>
+        <form>
+            <label for="fname2">First name:</label><br/>
+            <input type="text" id="fname2" name="fname2" value="John" readonly/><br/>
+            <label for="lname2">Last name:</label><br/>
+            <input type="text" id="lname2" name="lname2" value="Doe"/>
+        </form>
+        
+        <h2>The Disabled Attribute</h2>
+        <p>The input disabled attribute specifies that an input field should be disabled.</p>
+        <p>A disabled input field is unusable an un-clickable.</p>
+        <p>The value of a disabled input field will not be sent when submitting the form!</p>
+        <form>
+            <label for="fname3">First name:</label><br/>
+            <input type="text" id="fname3" name="fname3" value="John" disabled/><br/>
+            <label for="lname3">Last name:</label><br/>
+            <input type="text" id="lname3" name="lname3" value="Doe"/>
+        </form>
+
+        <h2>The Size Attribute</h2>
+        <p>The input size attribute specifies the visible width, in characters, of an input field.</p>
+        <p>The default value for size is 20.</p>
+        <p><strong>Note:</strong> The size attribute works with the following input types: text, search, tel, url, email, and password.</p>
+        <h3>Example</h3>
+        <p>Set a width for an input field:</p>
+        <form>
+            <label for="fname4">First name:</label><br/>
+            <input type="text" id="fname4" name="fname4" size="50"/><br/>
+            <label for="pin">PIN:</label><br/>
+            <input type="text" id="pin" name="pin" size="4"/>
+        </form>
+
+
+        <h2>The maxlength Attribute</h2>
+        <p>The input maxlength attribute specifies the maximum number of characters allowed in an input field.</p>
+        <p>Note: When a maxlength is set, the input field will not accept more than the specified number of characters. However, this attribute does not provide any feedback. So, if you want to alert the user, you must write JavaScript code.</p>
+
+        <h3>Example</h3>
+        <p>Set a maximum length for an input field:</p>
+
+        <form>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" size="50"><br>
+            <label for="pin">PIN:</label><br>
+            <input type="text" id="pin" name="pin" maxlength="4" size="4">
+        </form>
+
+        <h2>The min and max Attributes</h2>
+        <p>The input min and max attributes specify the minimum and maximum values for an input field.</p>
+        <p>The min and max attributes work with the following input types: number, range, date, datetime-local, month, time and week.</p>
+        <p><strong>Tip:</strong> Use the max and min attributes together to create a range of legal values.</p>
+
+        <h3>Example</h3>
+        <p>Set a max date, a min date, and a range of legal values:</p>
+        <form>
+            <label for="datemax">Enter a date before 1980/01/01:</label><br/>
+            <input type="date" id="datemax" name="datemax" max="1979-12-31"/><br/>
+            <label for="datemin">Enter a date after 2000/01/01:</label><br/>
+            <input type="date" id="datemin" name="datemin" min="2000-01-01"/><br/>
+            <label for="quantity">Quantity (between 1 and 5):</label><br/>
+            <input type="number" id="quantity" name="quantity" min="1" max="5"/>
+        </form>
+
+        <h2>The multiple Attribute</h2>
+        <p>The input multiple attribute specifies that the user is allowed to enter more than one value in an input field.</p>
+        <p>The multiple attribute works with the following input types: email, and file.</p>
+
+        <h3>Example</h3>
+        <p>A file upload field that accepts multiple values:</p>
+        <form>
+            <label for="files">Select files:</label>
+            <input type="file" id="files" name="files" multiple>
+        </form>
+
+        <h2>The pattern Attribute</h2>
+        <p>The input pattern attribute specifies a regular expression that the input field's value is checked against, when the form is submitted.</p>
+        <p>The pattern attribute works with the following input types: text, date, search, url, tel, email, and password.</p>
+        <p><strong>Tip:</strong> Use the global title attribute to describe the pattern to help the user.</p>
+
+        <h3>Example</h3>
+        <p>An input field that can contain only three letters (no numbers or special characters):</p>
+        <form>
+            <label for="country_code">Country code:</label>
+            <input type="text" id="country_code" name="country_code"
+            pattern="[A-Za-z]{3}" title="Three letter country code">
+        </form>
+
+        <h2>The placeholder Attribute</h2>
+        <p>The input placeholder attribute specifies short a hint that describes the expected value of an input field (a sample value or a short description of the expected format).</p>
+        <p>The short hint is displayed in the input field before the user enters a value.</p>
+        <p>The placeholder attribute works with the following input types: text, search, url, tel, email, and password.</p>
+        <h3>Example</h3>
+        <p>An input field with a placeholder text:</p>
+
+        <form>
+            <label for="phone">Enter a phone number:</label>
+            <input type="tel" id="phone" name="phone" 
+            placeholder="123-45-678"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+        </form>
+
+        <h2>The required Attribute</h2>
+        <p>The input required attribute specifies that an input field must be filled out before submitting the form.</p>
+        <p>The required attribute works with the following input types: text, search, url, tel, email, password, date pickers, number, checkbox, radio, and file.</p>
+
+        <h3>Example</h3>
+        <p>A required input field:</p>
+
+        <form>
+            <label for="username">Username:</label><br/>
+            <input type="text" id="username" name="username" required><br/>
+            <label for="captcha">Captcha:</label><br/>
+            <input type="text" id="captcha" name="captcha" required>
+            <input type="submit"/>
+        </form>
+
+        <h2>The step Attribute</h2>
+        <p>The input step attribute specifies the legal number intervals for an input field.</p>
+        <p>Example: if step="3", legal numbers could be -3, 0, 3, 6, etc.</p>
+        <p><strong>Tip:</strong> This attribute can be used together with the max and min attributes to create a range of legal values.</p>
+        <p>The step attribute works with the following input types: number, range, date, datetime-local, month, time and week.</p>
+
+        <h3>Example</h3>
+        <p>An input field with a specified legal number intervals:</p>
+
+        <form>
+            <label for="points">Points:</label>
+            <input type="number" id="points" name="points" step="3">
+        </form>
+
+        <p class="alert"><strong>Note:</strong> Input restrictions are not foolproof, and JavaScript provides many ways to add illegal input. To safely restrict input, it must also be checked by the receiver (the server)!</p>
+
+        <h2>The autofocus Attribute</h2>
+        <p>The input autofocus attribute specifies that an input field should automatically get focus when the page loads.</p>
+
+        <h3>Example</h3>
+        <p>Let the "First name" input field automatically get focus when the page loads:</p>
+
+        <form>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" autofocus><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname">
+        </form>
+
+
+        <h2>The height and width Attributes</h2>
+        <p>The input height and width attributes specify the height and width of an &lt;input type="image"&gt; element.</p>
+        <p class="alert"><strong>Tip:</strong> Always specify both the height and width attributes for images. If height and width are set, the space required for the image is reserved when the page is loaded. Without these attributes, the browser does not know the size of the image, and cannot reserve the appropriate space to it. The effect will be that the page layout will change during loading (while the images load).</p>
+
+        <h3>Example</h3>
+        <p>Define an image as the submit button, with height and width attributes:</p>
+
+        <form>
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname"><br><br>
+            <input type="image" src="submit.png" alt="Submit" width="124" height="48">
+        </form>
+
+        <h2>The list Attribute</h2>
+        <p>The input list attribute refers to a &lt;datalist&gt; element that contains pre-defined options for an &lt;input&gt; element.</p>
+
+        <h3>Example</h3>
+        <p>An &lt;input&gt; element with pre-defined values in a &lt;datalist&gt;:</p>
+
+        <form>
+            <input list="browsers">
+            <datalist id="browsers">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+            </datalist>
+        </form>
+
+        <h2>The autocomplete Attribute</h2>
+        <p>The input autocomplete attribute specifies whether a form or an input field should have autocomplete on or off.</p>
+
+        <p>Autocomplete allows the browser to predict the value. When a user starts to type in a field, the browser should display options to fill in the field, based on earlier typed values.</p>
+
+        <p>The autocomplete attribute works with &lt;form&gt; and the following &lt;input&gt;  types: text, search, url, tel, email, password, datepickers, range, and color.</p>
+
+        <h3>Example</h3>
+        <p>An HTML form with autocomplete on, and off for one input field:</p>
+
+        <form action="/action_page.php" autocomplete="on">
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" autocomplete="off"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p class="alert"><strong>Tip:</strong> In some browsers you may need to activate an autocomplete function for this to work (Look under "Preferences" in the browser's menu).</p>
+
+        <h2>HTML Form and Input Elements</h2>
+        
+        <table>
+            <tr>
+                <th>Tag</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>&lt;form&gt;</td>
+                <td>Defines an HTML form for user input</td>
+            </tr>
+            <tr>
+                <td>&lt;input&gt;</td>
+                <td>Defines an input control</td>
+            </tr>
+        </table>
+        	
+        	
+        
+        <script src="script.js"></script>
+    </body>
+</html>
