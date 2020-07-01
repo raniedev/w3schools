@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Emojis</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <h1>Using Emojis in HTML</h1>
+        <h2>What are Emojis</h2>
+        <p>Emojis look like images, or icons, but they are not.</p>
+        <p>They are letters(characters) from the UTF-8(Unicode) alphabet.</p>
+
+        <p class="eg">UTF-8 covers almost all the characters and symbols in the world.</p>
+
+        <h2>The HTML charset attribute</h2>
+        <p>To display an HTML page correctly, a web browser must know the character set used in the page.</p>
+        <p>This is specified in the &lt;meta&gt; tag:</p>
+        <p class="eg">&lt;meta charset="UTF-8"&gt;</p>
+        <p class="alert">If not specidied, UTF-8 is the default character set in HTML.</p>
+
+        <h2>UTF-8 Characters</h2>
+        <p>Many UTF-8 characters cannot be typed on a keyboard, but they can always be displayed using numbers (called entity numbers):</p>
+        <ul>
+            <li>A is 65</li>
+            <li>B is 66</li>
+            <li>C is 67</li>
+        </ul>
+
+        <p>I'll display A B C</p>
+        <p>I'll display &#65; &#66; &#67;</p>
+
+        <h2>Example Explained</h2>
+        <p>The &lt;meta charset="UTF-8"&gt; element defines the character set.</p>
+        <p>The characters A, B, and C, are displayed by the numbers 65, 66, and 67.</p>
+        <p>To let the browser understand that you are displaying a character, you must start the entity number with &# and end it with ; (semicolon).</p>
+
+        <h2>Emoji Characters</h2>
+        <p>Emojis are also characters from the UTF-8 alphabet.</p>
+        <ul>
+            <li>&#128151; is 128151</li>
+            <li>&#128516; is 128516</li>
+            <li>&#128519; is 128519</li>
+            <li>&#128525; is 128525</li>
+            <li>&#128526; is 128526</li>
+        </ul>
+
+        <p>Since Emojis are characters, they can be copied, displayed, and sized just like any other character in HTML</p>
+        <p class="size">&#128151; &#128516; &#128519; &#128525; &#128526;</p>
+
+        <p>For a full list, please go to our <a href="https://www.w3schools.com/charsets/ref_emoji.asp" target="_blank" title="Emoji List">HTML Emoji Reference</a>.</p>
+
+        <h2>The @charset CSS Rule</h2>
+        <p>You can use the CSS @charset rule to specify the character encoding used in a style sheet:</p>
+        <h3>Example</h3>
+        <p>Set the encoding of the style sheet to Unicode UTF-8:</p>
+        <p>@charset "UTF-8";</p>
+
+        <script src="script.js"></script>
+    </body>
+</html>
