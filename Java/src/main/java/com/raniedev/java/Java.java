@@ -9,6 +9,75 @@ package com.raniedev.java;
  * @author Ranie
  */
 public class Java {
+    
+    //Criação de Método, que consiste de um bloco de código que será executado apenas quando chamado
+    //Dados podem ser passados através de parâmetros
+    
+    //static significa que um membro (variável, método, bloco, classe aninhada) pertence à classe em si, e não a uma instância (objeto)
+    //void sigifica que o método não tem retorno de nenhum valor
+    static void exibirMsg(int parametro){
+        System.out.println("Este é um método, cujo parâmetro passado foi: " + parametro);
+    }
+    
+    static boolean ligarLuz(int hora){
+        return (hora > 17 && hora < 24) || (hora >= 0 && hora < 7) ? true : false;
+    }
+    
+    static void sobreEscrita(){
+        System.out.println("Método de sobreescrita");
+    }
+    
+    static int sobreEscrita(int x){
+        return x + 10;
+    }
+    
+    static int sobreEscrita(int x, int y){
+        return x + y;
+    }
+    
+    public static int somar(int x){
+        if(x > 0) {
+            return x + somar(x - 1);
+        } else {
+            return 0;
+        }
+    }
+    
+    /*
+    [Sequência da chamada recursiva]
+    Chamada com somar(5)
+    5 é maior que 0? Sim
+    Então, return 5 + somar(4)
+    
+    Chamada ccm somar(4)
+    4 é maior que 0? Sim
+    Então, return 4 + somar(3)
+    
+    Chamada com somar(3)
+    3 é maior que 0? Sim
+    Então, return 3 + somar(2)
+    
+    Chamada com somar(2)
+    2 é maior que 0? Sim
+    Então, return 2 + somar(1)
+    
+    Chamada com somar(1)
+    1 é maior que 0? Sim
+    Então, return 1 + somar(0)
+    
+    Chamada com somar(0)
+    0 é maior que 0? Não
+    Então return 0
+    
+    Logo, 
+    somar(0) return 0
+    somar(1) return 1 + somar(0) = 1 + 0 = 1
+    somar(2) return 2 + somar(1) = 2 + 1 = 3
+    somar(3) return 3 + somar(2) = 3 + 3 = 6
+    somar(4) return 4 + somar(3) = 4 + 6 = 10
+    somar(5) return 5 + somar(4) = 5 + 10 = 15
+    */
+    
     public static void main(String[] args) {
         //Exibir Texto
         System.out.println("Hello");
@@ -318,6 +387,29 @@ public class Java {
             for (int num : linha) {
               System.out.print(num + " ");
             }
-          }
+        }
+        
+        //Chamad de método, passando um int
+        //Múltiplos parâmetros podem ser passados por uso de vírgulas, desde que o método tenha a mesma quantidade
+        exibirMsg(50);//Valor 50 é um argumento
+        
+        boolean interruptor = ligarLuz(19);
+        System.out.println("O interruptor está ligado? " + (interruptor ? "Sim" : "Não"));
+        
+        //Sobreescrita de métodos, desde que os métodos tenha quantidade de parâmetros diferentes ou retorne um tipo diferente
+        sobreEscrita();
+        sobreEscrita(100);
+        sobreEscrita(50 + 30);
+        
+        /*
+        Escopo das variáveis. Variáveis criadas dentro desses tipos são apenas locais
+        - Escopo de métodos
+        - Escopo de bloco, que são delimitados por chaves { int x = 1; }
+        - Escopo do Loop
+        - Escopo de Classe pode ser usado dentro de toda a classe
+        */
+        
+        //Recursão, é quando o método/função chama a si mesmo
+        System.out.println(somar(6));
     }
 }
