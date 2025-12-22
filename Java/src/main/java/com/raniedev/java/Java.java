@@ -4,6 +4,12 @@
 
 package com.raniedev.java;
 
+//Importar tudo de outro pacote
+import pacote.*;
+//import pacote.OutroPacote; //Importar uma classe específica de outro pacote
+
+//Importar pacote do Java para uso de input/output
+import java.util.Scanner;
 /**
  *
  * @author Ranie
@@ -411,5 +417,54 @@ public class Java {
         
         //Recursão, é quando o método/função chama a si mesmo
         System.out.println(somar(6));
+        
+        Pessoa p1 = new Pessoa();
+        System.out.println(p1.nome);
+        p1.olaClasse();
+        
+        //Classe com construtor
+        Animal a1 = new Animal(12);
+        Animal a2 = new Animal(7, "Bob");
+        
+        //Palavra reservada this
+        //Serve para referenciar ao objeto atual em um método ou construtor
+        //Também evita confusão e difere a variável da classe com a interna do método/construtor
+        Animal a3 = new Animal(10, "Pluto", "Cachorro");
+        Animal a4 = new Animal(5, "Mingau", "Gato", true);
+        
+        
+        /*
+        Modificadores de acesso
+        public      [Class][Package][Subclass][Global] Acesso global, mesma classe, mesmo pacote, classes filhas(subclasse) e outros pacotes
+        protected   [Class][Package][Subclass] Na mesma classe, pacote e classes filhas (subclasse)
+        default     [Class][Package] Apenas na mesma classe e pacote
+        private     [Class] Apenas na mesma classe
+        */ 
+        Pessoa p2 = new Pessoa();
+        System.out.println(p2.publ);
+        System.out.println(p2.prot);
+        System.out.println(p2.deft);
+        
+        
+        OutroPacote op = new OutroPacote();
+        System.out.println(op.outroPacote);
+        
+        
+        /*
+        Modificadores que não são de acesso: final, static, and abstract.
+        o final transformará uma variável em constante
+        com static, o método pertence a classe e não a um objeto específico
+        abstract determina que o método pertence a uma classe abstrata, classe esta que não possui corpo, será passado posteriormente
+        transient, atributos e métodos são ignorados ao serializar o objeto que os contém
+        synchronized, métodos apenas podem ser acessados um por thread
+        volatile, o valor do atributo nunca é armazenado em cache localmente na thread, é sempre lido da memória principal
+        */
+        
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Insira um nome: ");
+        
+        String nome = scan.nextLine();
+        System.out.println("Bem-vindo, " + nome);
     }
 }
