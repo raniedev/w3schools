@@ -584,12 +584,8 @@ public class Java {
         System.out.println("Data: " + data + " Hora: " + hora);
         System.out.println(data_hora);
         
-        //Data e Hora formatada, deve importar a biblioteca import java.time.format.DateTimeFormatter;
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE dd/MMMM/yyyy HH:mm:ss");
-        String dataformatada = data_hora.format(formato);
-        System.out.println(dataformatada);
+        /*Data e Hora formatada, deve importar a biblioteca import java.time.format.DateTimeFormatter;
         
-        /*
         Padrões de Data
         y = ano (4 dígitos) ex.: 2025, 1991, 1500
         yy = ano (2 dígitos) ex.: 25, 91, 00
@@ -629,6 +625,136 @@ public class Java {
         XXX = A diferença de fuso horário para o Meridiano de Greenwich, Offset ISO (ex.: -03:00)
         0 = A diferença de fuso horário para o Meridiano de Greenwich, Offset Localizado (ex.: GMT-3)
         W = ID da Zona (Ex.: America/Sao_Paulo)
+        */
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE dd/MMMM/yyyy HH:mm:ss");
+        String dataformatada = data_hora.format(formato);
+        System.out.println(dataformatada);
+        
+        /*
+        Tratamentos de Erros
+        
+        Tipos de erros em Java:
+        [Compile-Time Error] É detectado pelo compilador, evita a execução do código.
+        
+        Exemplo 1: Dará erro pela falta de ; que é obrigatório no Java ao final de cada instrução
+        int x = 5
+        System.out.println(x);
+        
+        Exemplo 2: Dará erro porque a variável não foi declarada
+        System.out.println(y);
+        
+        Exemplo 3: Dará erro porque o tipo é diferente do que foi declarado
+        int z = "Texto"
+               
+        [Runtime Error] Ocorre quando o programa está sendo executado, pode causar "crashes", que é quando o programa encerra sozinho
+        
+        Exemplo 1: Divisão por zero
+        int divisao = 10 / 0;
+        
+        Exemplo 2: Posição do Array passada está fora dos limites (Out of bounds)
+        int[] numeros = {1, 2, 3};
+        System.out.println(numeros[5]);
+        
+        [Logical Error] Código executa mas mostra resultados incorretos, mais difícil de achar.
+        int x = 10;
+        int y = 2;
+        int sum = x - y;
+        System.out.println("x + y = " + sum); //Vai exibir 8 em vez de 12
+        
+        
+        Debugging
+        
+        O que é debugging? É o processo de identificar e arrumar erros ou bugs no código
+        Um processo que envolve:
+        - Ler mensagens de erro
+        - Rastrear valores de variáveis passo à passo
+        - Testar pequenos espaços do código de forma independente
+        
+        Java Exceptions
+        
+        Try and Catch funciona como uma condicional, se a tentativa do código dentro de "try" falhar irá executar o bloco "catch"
+        */
+        try {
+            int erro1 = 10/0;
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        
+        //A declaração finally permite executar código após um try ... catch
+        try {
+            int[] indices = {10, 25, 50};
+            System.out.println(indices[10]);
+        } catch(Exception e){
+            System.out.println(e);
+        } finally {
+            System.out.println("Declaração Finally");
+        }
+        
+        /*
+        Com a palavra chave throw é possível criar uma mensagem de erro personalizada
+        Existem diversos tipos de erros, como:
+        - ArithmeticException: Quando um cálculo matemático dá errado
+        - ArrayIndexOutOfBoundsException: Quando tentar acessar um index fora dos limites de um array
+        - ClassNotFoundException: Quando tenta acessar uma classe que não existe
+        - FileNotFoundException: Quando um arquivo não pode ser acessado
+        - InputMismatchException: Quando informa um tipo de input diferente do esperado
+        - IOException: Quando uma operação input/output falha
+        - NullPointerException: Quando tenta acessar um objeto que é null
+        - NumberFormatException: Quando não é possível converter uma string específica para um tipo numérico
+        - StringIndexOutOfBoundsException: Quando tenta acessar um caractere em uma String inexistente
+        - SecurityException: Quando uma operação falhou por falta de permissão de segurança
+        etc.
+        */
+        age = 15;
+        if (age < 18) {
+            throw new ArithmeticException("Acesso negado, menor de idade.");
+        } else {
+            System.out.println("Accesso permitido!");
+        }
+        
+        /*
+        Múltiplas Exceções
+        
+        try {
+            ...
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ...
+        } catch (ArithmeticException e) {
+            ...
+        } catch (Exception e) {
+            ...
+        }
+        
+        ATENÇÃO: (Exception e) sempre será o último no multi-catch
+        
+        Múltiplas Exceções também podem ser passadas juntas
+        
+        try {
+            ...
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Erro Matemático ou Erro no Array.");
+        }
+        
+        
+        Java Close Resources (try-with-resources)
+        Quando trabalhar com arquivos, streams ou outro tipo de recursos é importante que os fechem após o uso
+        
+        try {
+            FileOutputStream output = new FileOutputStream("filename.txt");
+            output.write("Oi".getBytes());
+            output.close();  //Em versões antigas era necessário fechar manualmente
+            System.out.println("Escreveu no arquivo com sucesso!.");
+        } catch (IOException e) {
+            System.out.println("Erro ao escrever no arquivo.");
+        }
+        
+        try (FileOutputStream output = new FileOutputStream("filename.txt")) {
+            output.write("Oi".getBytes());
+            //A partir do Java 7 não é necessário mais usar, pois o Java fechará automaticamente com o término do bloco
+            System.out.println("Escreveu no arquivo com sucesso!.");
+        } catch (IOException e) {
+            System.out.println("Erro ao escrever no arquivo.");
+        }
         */
         
     }
