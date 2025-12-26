@@ -10,6 +10,10 @@ import pacote.*;
 
 //Importar pacote do Java para uso de input/output
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author Ranie
@@ -129,7 +133,7 @@ public class Java {
         byte tam_byte = 100; //2^8 = -128 até 127
         short tam_short = 20500; //2^16 = -32,768 até 32,767
         int tam_int = 7999444; //2^32 = -2,147,483,648 até 2,147,483,647
-        long tam_long = 1234567890L; //2^64 = -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+        long tam_long = 1234567890L; //2^64 = -9,223,372,036,854,775,808 até 9,223,372,036,854,775,807
         float tam_float = 15.2f; //Armazena cerca de 6 até 7 dígitos decimais
         double tam_double = 299.999111999111999d; //Armazena cerca de 15 até 16 dígitos decimais
         
@@ -460,11 +464,172 @@ public class Java {
         volatile, o valor do atributo nunca é armazenado em cache localmente na thread, é sempre lido da memória principal
         */
         
-        
+        //Importando pacote da API do Java para usar o Scanner
         Scanner scan = new Scanner(System.in);
         System.out.print("Insira um nome: ");
         
         String nome = scan.nextLine();
         System.out.println("Bem-vindo, " + nome);
+        
+        
+        //Herança
+        ClasseFilho cf = new ClasseFilho();
+        cf.setNome("Ricardo");
+        cf.honk();
+        cf.getNomePai();
+        cf.getParentName();
+        
+        //super.
+        PolimorfismoFilho pf = new PolimorfismoFilho();
+        pf.exibir();
+        
+        //Classes Internas
+        ClasseExterna ce = new ClasseExterna();
+        ClasseExterna.ClasseInterna ci = ce.new ClasseInterna();
+        System.out.println(ci.y + " " + ce.x);
+        
+        //Método Interno
+        System.out.println(ci.MetodoInterno());
+        
+        /*
+        Assim como as classes abstratas, as interfaces não podem ser usadas para criar objetos
+        As interfaces não tem corpo, os corpos serão providos através das classes implementadas
+        Nas implementações de uma interface, você deve sobreescrever com a palavra reservada @Override todos os métodos
+        Por padrão os métodos da interface são abstract e public
+        Os atributos são por padrão public, static e final
+        Uma interface não pode conter um construtor, como não pode ser utilizada para criar objetos
+        
+        Por que usar intarface?
+        1) Para ganho de segurança, esconde detalhes e apenas mostrar detalhes importantes de um objeto (interface)
+        2) Java não suporta "herança múltipla" (apenas uma classe pode herdar de uma superclasse). Entretanto, isto pode ser obtido com interfaces
+        Para implementar múltiplas interfaces, elas devem ser separadas com uma vírgula
+        */
+        MultiplasInterfaces mp = new MultiplasInterfaces();
+        mp.metodoUm();
+        mp.metodoDois();
+        
+        /*
+        Classe anônima é a criação de uma classe sem um nome, é criado e usado no mesmo tempo
+        Geralmente é usado para sobreescrever métodos de uma classe ou interface sem a necessidade de criar um novo arquivo
+        */
+        Pessoa pess = new Pessoa() {
+            public void olaClasse(){
+                System.out.println("Sobreescrevendo um método da classe Pessoa através de uma classe anônima.");
+            }
+        };
+        
+        /*
+        Classe anônima vindo de uma interface
+        */
+        InterfaceUm interf = new InterfaceUm(){
+            public void metodoUm(){
+                System.out.println("Sobreescrevendo um método de uma interface.");
+            }
+        };
+        
+        //Enum, são constantes definidas por default como: public, static e final (não podem ser mudadas nem sobreescritas)
+        Enumeracao enumerar = Enumeracao.INSANE;
+        
+        //Loop através de uma enumeração
+        for (Enumeracao enm : Enumeracao.values()){
+            System.out.println(enm);
+        }
+       
+        //Enum também pode ter construtores
+        EnumConstrutor enumc = EnumConstrutor.HIGH;
+        System.out.println(enumc.getDescription());
+        
+        for (EnumConstrutor e : EnumConstrutor.values()) {
+            System.out.println(e.getLevel() + " " + e.getDescription());
+        }
+        
+        //User inputs e seus tipos
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite uma string: ");
+        String inputText = input.nextLine();
+        System.out.println("Foi digitado: " + inputText);
+        
+        System.out.print("Digite um valor booleano (true | false): ");
+        boolean inputBool = input.nextBoolean();
+        System.out.println("Foi digitado: " + inputBool);
+        
+        System.out.print("Digite um valor byte (-128 até 127): ");
+        byte inputByte = input.nextByte();
+        System.out.println("Foi digitado: " + inputByte);
+        
+        System.out.print("Digite um valor short (-32,768 até 32,767): ");
+        double inputShort = input.nextShort();
+        System.out.println("Foi digitado: " + inputShort);
+        
+        System.out.print("Digite um valor inteiro (-2,147,483,648 até 2,147,483,647): ");
+        int inputInt = input.nextInt();
+        System.out.println("Foi digitado: " + inputInt);
+        
+        System.out.print("Digite um valor long (-9,223,372,036,854,775,808 até 9,223,372,036,854,775,807): ");
+        double inputLong = input.nextLong();
+        System.out.println("Foi digitado: " + inputLong);
+        
+        System.out.print("Digite um valor float (tem 6 até 7 dígitos decimais): ");
+        double inputFloat = input.nextFloat();
+        System.out.println("Foi digitado: " + inputFloat);
+        
+        System.out.print("Digite um valor double (tem 15 até 16 dígitos decimais): ");
+        double inputDouble = input.nextDouble();
+        System.out.println("Foi digitado: " + inputDouble);
+        
+        //Java Dates e Time, é necessário utilizar o import java.time.LocalDate / LocalTime etc;
+        LocalDate data = LocalDate.now();
+        LocalTime hora = LocalTime.now();
+        LocalDateTime data_hora = LocalDateTime.now();
+        System.out.println("Data: " + data + " Hora: " + hora);
+        System.out.println(data_hora);
+        
+        //Data e Hora formatada, deve importar a biblioteca import java.time.format.DateTimeFormatter;
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE dd/MMMM/yyyy HH:mm:ss");
+        String dataformatada = data_hora.format(formato);
+        System.out.println(dataformatada);
+        
+        /*
+        Padrões de Data
+        y = ano (4 dígitos) ex.: 2025, 1991, 1500
+        yy = ano (2 dígitos) ex.: 25, 91, 00
+        yyyy = ano (4 dígitos também)
+        M = Mês numérico, ignora quando tiver zero à esquerda (1 até 12)
+        MM = Mês numérico, mantém o zero à esquerda (01 até 12)
+        MMM = Nome do mês abreviado ex.: Jan, Feb, Mar etc.
+        MMMM = Nome do mês ex.: January, February, March etc.
+        d = Dia do mês (1 dígito)
+        dd = Dia do mês (2 dígitos)
+        D = Dia do ano
+        E = Dia da semana abreviado ex.: Mon, Tue, Wed etc.
+        EEEE = Dia da semana ex.: Monday, Tuesday, Wednesday etc.
+        F = Semana do mês
+        w = Semana no ano
+        W = Semana do mês
+        
+        Padrões de Hora
+        H = Horas com formato de 24 horas, ignora quando tiver zero à esquerda (0 até 23)
+        HH = Horas com formato de 24 horas, mantém o zero à esquerda (00 até 23)
+        h = Horas com formato de 12 horas, ignora quando tiver zero à esquerda (1 até 12)
+        hh = Horas com formato de 12 horas, mantém o zero à esquerda (01 até 12)
+        m = Minutos, ignora quanto tiver zero à esquerda.(0 até 59)
+        mm = Minutos, mantém o zero à esquerda. (00 até 59)
+        s = Segundos, ignora quanto tiver zero à esquerda.(0 até 59)
+        ss = Segundos, mantém o zero à esquerda. (00 até 59)
+        S = Miliegundos de 1 dígito
+        SS = Miliegundos de 2 dígitos
+        SSS = Miliegundos de 3 dígitos
+        a = Informa se é AM/PM
+        
+        Fuso Horário (Time Zone)
+        z = Nome do fuso (ex.: BRT)
+        Z = A diferença de fuso horário para o Meridiano de Greenwich, Offset RFC 822 (ex.: -0300)
+        X = A diferença de fuso horário para o Meridiano de Greenwich, Offset ISO (ex.: -03)
+        XX = A diferença de fuso horário para o Meridiano de Greenwich, Offset ISO (ex.: -0300)
+        XXX = A diferença de fuso horário para o Meridiano de Greenwich, Offset ISO (ex.: -03:00)
+        0 = A diferença de fuso horário para o Meridiano de Greenwich, Offset Localizado (ex.: GMT-3)
+        W = ID da Zona (Ex.: America/Sao_Paulo)
+        */
+        
     }
 }
