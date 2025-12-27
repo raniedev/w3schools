@@ -14,6 +14,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
 /**
  *
  * @author Ranie
@@ -705,7 +709,7 @@ public class Java {
         - SecurityException: Quando uma operação falhou por falta de permissão de segurança
         etc.
         */
-        age = 15;
+        age = 19;
         if (age < 18) {
             throw new ArithmeticException("Acesso negado, menor de idade.");
         } else {
@@ -755,7 +759,132 @@ public class Java {
         } catch (IOException e) {
             System.out.println("Erro ao escrever no arquivo.");
         }
+        
+        Java Files
+        Manipulação de arquivos no Java, há vários métodos para criação, leitura, atualização e eliminação dos arquivos.
+        
+        Para manipular arquivos deve usar o pacote import java.io.File;
+        */
+        File file = new File("filename.txt"); //Especifica o nome do arquivo
+        
+        /*
+        A classe File tem diversos métodos úteis para criar e coletar informações sobre arquivos
+        
+        canRead() [Boolean] Testa se o arquivo pode ser lido ou não
+        canWrite() [Boolean] Testa se pode escrever no arquivo ou não
+        createNewFile() [Boolean] Cria um arquivo vazio
+        delete() [Boolean] Apaga um arquivo
+        exists() [Boolean] Testa se o arquivo existe
+        getName() [String] Retorna o nome do arquivo
+        getAbsolutePath() [String] Retorne o nome do caminho do arquivo
+        length() [Long] Retorna o tamanho do arquivo em bytes
+        mkdir() [Boolean] Cria uma pasta
+        */
+        try {
+            File arquivo = new File("arquivo.txt");
+            if (arquivo.createNewFile()) { //Tenta criar
+                System.out.println("Arquivo criado: " + arquivo.getName());
+            } else {
+                System.out.println("O arquivo já existe.");
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace(); //Mostrar o erro em detalhes
+        }
+        
+        /*
+        Criar um arquivo em uma pasta específica
+        File arquivo_caminho = new File("C:\\Users\\Usuario\\nome_arquivo.txt");
+        
+        Escrever em um arquivo, o jeito mais fácil de escrever texto é usando a classe FileWriter juntamente com write()
+        Note: Quando finalizar o que precisa ser feito, deve usar a chamada do método close() / Mas a partir do Java 7 o close() se torna opcional, pois o Java fecha automaticamente
+        */
+        try {
+            File arquivo = new File("arquivo.txt");
+            FileWriter escrever = new FileWriter("arquivo.txt");
+            escrever.write("Escrevendo no arquivo através do Java.");
+            escrever.close();
+            System.out.println("Escritou com sucesso no arquivo " + arquivo.getName());
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        
+        //Usando o construtor de apenas um parâmetro irá sobreescrever o texto do arquivo
+        //Para adicionar novo conteúdo no arquivo, deve-se usar o construtor de dois parâmetros, que é um boolean, true representa que deseja um append em vez de um overwrite
+        try {
+            File arquivo = new File("arquivo.txt");
+            FileWriter escrever = new FileWriter("arquivo.txt", true);
+            escrever.write("\nAdicionando novo conteúdo no arquivo através do Java, sem apagar o conteúdo anterior.");
+            escrever.close();
+            System.out.println("Adicionou mais conteúdo com sucesso no arquivo " + arquivo.getName());
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        
+        /*
+        Outros meios de escrever em um arquivo, use:
+        - FileWriter: Para adicionar texto simples
+        - BufferedWriter: É melhor para arquivos que precisa de grande quantidade de texto, é mais prático e oferece recursos práticos.
+        - FileOutputStream: É melhor para (binary data) dados binários, como: imagens, áudios, arquivos .PDF
+        
+        Leitura de Arquivo
+        Nós usamos o Scanner para ler os conteúdos dos arquivos
         */
         
+        File arquivo = new File("arquivo.txt");
+        try (Scanner leitor = new Scanner(arquivo)) {
+            System.out.println("\nLendo Arquivo: " + arquivo.getName());
+            System.out.println("Caminho: " + arquivo.getAbsolutePath());
+            System.out.println("Pode ser escrito? " + arquivo.canWrite());
+            System.out.println("Pode ser lido? " + arquivo.canRead());
+            System.out.println("Tamanho: " + arquivo.length());
+            System.out.println("\nConteúdo:");
+            while (leitor.hasNextLine()) {
+              String dados = leitor.nextLine();
+              System.out.println(dados);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Não foi possível abrir " + arquivo.getName());
+            e.printStackTrace();
+        }
+        
+        //Apagar arquivo
+        File arq = new File("apagar.txt");
+        System.out.println("Deseja apagar o arquivo " + arq.getName() + "?");
+        String resposta = scan.nextLine();
+        
+        String[] respostas = {"sim", "si", "s", "yes", "yep", "y"};
+        
+        try {
+            if (arq.createNewFile()) { //Tenta criar
+                System.out.println("Arquivo criado: " + arq.getName());
+            } else {
+                System.out.println("O arquivo já existe.");    
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace(); //Mostrar o erro em detalhes
+        }
+        
+        for(String r : respostas){
+            if(resposta.equals(r)){
+                arq.delete();
+                break;
+            }
+        }
+        
+        if(arq.exists()){
+            System.out.println("O arquivo não foi apagado.");
+        } else {
+            System.out.println("Arquivo apagado com sucesso!");
+        }
+        
+        /* 
+        Para apagar um diretório, basta passar o caminho
+        File pasta = new File("C:\\Users\\Usuario\\Pasta"); 
+        pasta.delete()
+        */
     }
 }

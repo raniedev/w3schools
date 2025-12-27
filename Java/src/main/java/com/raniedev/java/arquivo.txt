@@ -1,0 +1,2 @@
+Escrevendo no arquivo através do Java.
+Adicionando novo conteúdo no arquivo através do Java, sem apagar o conteúdo anterior.
