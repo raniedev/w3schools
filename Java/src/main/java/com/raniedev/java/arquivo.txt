@@ -1,2 +1,4 @@
-Escrevendo no arquivo através do Java.
-Adicionando novo conteúdo no arquivo através do Java, sem apagar o conteúdo anterior.
+Deus é Fiel
+Amém
+Nem só de pão viverá o homem
+Não tentarás o Senhor teu Deus

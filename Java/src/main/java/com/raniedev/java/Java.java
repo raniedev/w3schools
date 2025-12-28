@@ -18,6 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
 /**
  *
  * @author Ranie
@@ -852,7 +857,7 @@ public class Java {
         
         //Apagar arquivo
         File arq = new File("apagar.txt");
-        System.out.println("Deseja apagar o arquivo " + arq.getName() + "?");
+        System.out.print("Deseja apagar o arquivo " + arq.getName() + "? ");
         String resposta = scan.nextLine();
         
         String[] respostas = {"sim", "si", "s", "yes", "yep", "y"};
@@ -885,6 +890,111 @@ public class Java {
         Para apagar um diretório, basta passar o caminho
         File pasta = new File("C:\\Users\\Usuario\\Pasta"); 
         pasta.delete()
+        
+        
+        Java I/O Streams
+        Tem uma diferença de trabalhar com arquivos (File) e com flux de entrada e saída de dados. (I/O Stream)
+        A classe File serve para saber informações sobre arquivos e diretórios
+        - O arquivo existe?
+        - Qual é o nome e tamanho?
+        - Criar ou apagar arquivos e pastas
+        
+        Mas a classe File não lê ou escreve os conteúdos do arquivo
+        I/O Streams são mais flexíveis, eles trabalham com texto e dados binários (como imagens, áudio, .PDFs)
+        
+        Tipos de Streams
+        - Byte Streams: Trabalha com dados binários (RAW) como imagens, áudio e PDFs. ex.: FileInputStream, FileOutputStream
+        - Character Streams: Trabalha com texto (caracteres e strings). Esses fluxos lidam automaticamente com a codificação de caracteres. ex.: FileReader, FlieWriter, BufferedReader, BufferedWriter
+        
+        Use "character streams" quando trabalhar com texto, e "byte streams" quando trabalhar com dados binários.
         */
+        try (FileInputStream inputStream = new FileInputStream("arquivo.txt")) {
+
+            int i;  // variável para gravar cada byte que é lido
+
+            // Lê um byte por vez até que o fim do arquivo. (-1 significa que não há mais dados)
+            while ((i = inputStream.read()) != -1) {
+              // Converter o byte para char para ser exibido
+              System.out.print((char) i);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro " + e + " ao ler o arquivo.");
+        }
+        
+        
+        //Como trabalha com raw bytes, esse código pode copiar qualquer tipo de arquivo: texto, imagem, áudio ou PDFs.
+        try (FileInputStream inputStream2 = new FileInputStream("imagem.jpg");
+            FileOutputStream output = new FileOutputStream("copia.jpg")) {
+            int i;
+            while ((i = inputStream2.read()) != -1) {
+                output.write(i);  // Escreva o raw byte para um novo arquivo
+            }
+            System.out.println("Arquivo copiado com sucesso.");
+        } catch (IOException e) {
+            System.out.println("Erro " + e + "ao manipular o arquivo.");
+        }
+        
+        //A classe FileOutputStream funciona de um jeito similar ao FileWriter, mas escreve dados como "raw bytes".
+        //Isso significa que você pode não apenas em texto, mas em arquivos binários (como imagens, .PDFs, ou áudio)
+        //Escrever um arquivo de texto, note que o arquivo será sobreescrito caso ele já exista.
+        String novo_texto = "Eu prefiro morrer do que perder a vida!";
+        try (FileOutputStream outputStream = new FileOutputStream("apagar.txt")) {
+          outputStream.write(novo_texto.getBytes());  // converte texto para bytes e escreve
+          System.out.println("Escrito com sucesso no arquivo.");
+        } catch (IOException e) {
+          System.out.println("Erro ao escrever no arquivo.");
+          e.printStackTrace();
+        }
+        
+        //Append no arquivo, adicionar mais conteúdo sem sobreescrever
+        String mais_texto = "\nMais vale um covarde vivo do que um herói morto!";
+
+        // true = significa "append mode", ou seja, matenha o conteúdo anterior
+        try (FileOutputStream output = new FileOutputStream("apagar.txt", true)) {
+          output.write(mais_texto.getBytes());
+          System.out.println("Adicionou mais conteúdo com sucesso.");
+        } catch (IOException e) {
+          System.out.println("Erro ao escrever no arquivo.");
+          e.printStackTrace();
+        }
+        
+        /*
+        BufferedReader e BufferedWriter faz com que a leitura e escrita de arquivos de textos se tornem mais rápidas
+        BufferedReader deixa você ler o texto linha por linha com readLine()
+        BufferedWriter deixa você escrever o texto de forma eficiente e escrever novas linhas com newLine()
+        
+        Essas classes são costumente combinadas com FileReader e FileWriter, na qual manuseia abrir e fechar o arquivo.
+        As classes buffered tornam as leituras e escritas mais rápidas usando a memória buffer
+        */
+        
+        try (BufferedReader br = new BufferedReader(new FileReader("apagar.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+              System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao tentar ler o arquivo.");
+        }
+        
+        //BufferedWriter (Com sobreescrita)
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("arquivo.txt"))) { //pode adicionar argumento "true" para evitar sobreescrita
+            bw.write("Deus é Fiel");
+            bw.newLine();  // adiciona quebra de linha
+            bw.write("Amém");
+            System.out.println("Escreveu mais conteúdo com BufferedWriter.");
+        } catch (IOException e) {
+            System.out.println("Erro ao tentar escrever no arquivo.");
+        }
+        
+        //BufferedWriter (Sem sobreescrita)
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("arquivo.txt", true))) {
+            bw.write("\nNem só de pão viverá o homem");
+            bw.newLine();  // adiciona quebra de linha
+            bw.write("Não tentarás o Senhor teu Deus");
+            System.out.println("Escreveu mais conteúdo com BufferedWriter.");
+        } catch (IOException e) {
+            System.out.println("Erro ao tentar escrever no arquivo.");
+        }
     }
 }
