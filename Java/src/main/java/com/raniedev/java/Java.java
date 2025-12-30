@@ -23,6 +23,19 @@ import java.io.FileOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Collections;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.LinkedHashMap;
 /**
  *
  * @author Ranie
@@ -996,5 +1009,327 @@ public class Java {
         } catch (IOException e) {
             System.out.println("Erro ao tentar escrever no arquivo.");
         }
+        
+        /*
+        Estrutura de Dados
+        Um array é um exemplo de estrutura de dados, na qual permite que múltiplos elementos sejam armazenados em uam simples variável.
+        O Java possui muitas outras estruturas de dados no pacote "java.util", cada um é usado para manipular de jeitos diferentes, como:
+        ArrayList | Elementos ordenados | Mantém a ordem | Permite valores duplicados | Acessa os valores pelo índice (index)
+        HashSet | Elementos únicos | Não mantém a ordem | Não permite valores duplicados | Evitando valores duplicados, checa mais rápido
+        HashMap | Pares de Chave-valor | Não mantém a ordem | Permite valores duplicados, mas as chaves são únicas | Pesquisa mais rápida através da chave
+        
+        Estrutura de dados são como super arrays, elas são mais flexíveis e mais ricos em recursos.
+        
+        ArrayList é um array escalável, pode crescer conforme a necessidade do usuário
+        */
+        ArrayList<String> kuruma = new ArrayList<String>(); //Pode apenas colocar o <> "diamond" na segunda chamada, evitando assim repetição desnecessária
+        kuruma.add("Volvo");
+        kuruma.add("BMW");
+        kuruma.add("Pegeout");
+        kuruma.add("Mazda");
+        kuruma.add("Toyota");
+        kuruma.add("Chevrolet");
+        kuruma.add("Fiat");
+        kuruma.add("Ford");
+        kuruma.add("Hyundai");
+        kuruma.add("Honda");
+        kuruma.add("Nissan");
+        System.out.println(kuruma);
+        
+        //HashSet é uma coleção de elementos onde cada elemento é único, não permite repetições.
+        HashSet<String> kuni = new HashSet<>();
+        kuni.add("Brasil");
+        kuni.add("Argentina");
+        kuni.add("Japão");
+        kuni.add("Itália");
+        kuni.add("Portugal");
+        kuni.add("México");
+        kuni.add("Espanha");
+        kuni.add("Romenia");
+        kuni.add("Coréia do Sul");
+        kuni.add("Egito");
+        kuni.add("Israel");
+        kuni.add("Austrália");
+        kuni.add("China");
+        System.out.println(kuni);
+        
+        //HashMap grava conjunto de chave-valor (key-value pairs), é ótimo para quando quiser armazenar valores e econtrá-lo através de procurar a chave
+        HashMap<String, String> ddd = new HashMap<>();
+        ddd.put("11", "Grande São Paulo");
+        ddd.put("21", "Região Metropolitana do RJ");
+        ddd.put("22", "Região dos Lagos do RJ");
+        ddd.put("27", "Espírito Santo");
+        ddd.put("31", "Minas Gerais");
+        System.out.println(ddd);
+        
+        // Iterator: É um jeito de percorrer os elementos de uma estrutura de dados.
+        Iterator<String> itera = kuruma.iterator();
+        
+        System.out.println("\nIteração de uma estrutura de dados:");
+        while(itera.hasNext()){
+            System.out.println(itera.next());
+        }
+        
+        /*
+        The Collections Framework
+        O "collections framework" fornece um conjunto de interfaces (como List, Set, Map) e um conjunto de classes (ArrayList, HashSet, HasMap, etc) que implemetam essas interfaces.
+        Todas elas são partes de um pacote java.util
+        Eles são usados para gravar, procurar, ordenar e organizar os dados mais facilmente, todos usando métodos padronizados
+        
+        Algumas interfaces e suas classes:
+        List | ArrayList, LinkedList | Coleções ordenadas que permitem dados duplicados
+        Set | HashSet, TreeSet, LinkedHashSet | Coleções de elementos únicos
+        Map | HashMap, TreeMap, LinkedHashMap | Armazenada pares de chaves-valor
+        
+        Métodos comuns de List:
+        add() Adiciona um elemento ao final da lista
+        get() Retorna o elemento de uma posição específica
+        set() Troca o elemento de uma posição específica
+        remove() Remove o elemento de uma posição específica
+        size() Retorna a quantidade de elementos
+        clear() Apaga todos os elementos
+        */
+        System.out.println("\nO segundo elemento do ArrayList é: " + kuruma.get(1));
+        kuruma.set(1, "Ferrari");
+        System.out.println("O segundo elemento do ArrayList agora é: " + kuruma.get(1));
+        System.out.println("O ArrayList tem: " + kuruma.size() + " elementos.");
+        kuruma.remove(3);
+        System.out.println("O ArrayList agora tem: " + kuruma.size() + " elementos.");
+        
+        /*
+        Diferenças entre Array e List
+        Array
+        - tem tamanho fixo
+        - é mais rápido para "raw data"
+        - não faz parte do "Collections Framework" do Java 
+        
+        List
+        - tem tamanho dinâmico
+        - mais flexível e rico em recursos
+        - faz parte do "Collections Framework" do Java 
+        
+        Use o pacote Collections para ordernar os elementos do ArrayList
+        */
+        Collections.sort(kuruma);
+        System.out.println("\nLista de carros ordenada: ");
+        for(String i : kuruma){
+            System.out.println(i);
+        }
+        
+        //A palavra chave reservada "var", serve para receber uma estrutura de dados sem declarar o seu tipo de forma duplicada
+        var cars = kuruma;
+        System.out.println(cars);
+        
+        //Também é possível a combinação de List e ArrayList no código Java
+        List<String> filmes = new ArrayList<>();
+        filmes.add("X-men");
+        filmes.add("Spider-man");
+        filmes.add("Star Wars");
+        filmes.add("Fast and Furious");
+        filmes.add("Deadpool");
+        System.out.println(filmes);
+        
+        /*
+        LinkedList é uma coleção que pode ter vários objetos do mesmo tipo, igual ao ArrayList
+        
+        Como ArrayList funciona? a classe tem um array convencional dentro. Quando um elemento é adicionado, é colocado no array.
+        Se o array não é grande o suficiente, um novo e maior array é criado para substituir o anterior, e o array antigo é removido
+        
+        Como LinkedList funciona? armazena seus elementos em containers. A lista tem um link para o primeiro container e cada container tem um link para o próximo container
+        Para adicionar elementos na lista, e elemento é colocado em um novo container e esse container é conectado aos outros containers
+        */
+        LinkedList<String> animes = new LinkedList<>();
+        animes.add("Death Note");
+        animes.add("Dragon Ball");
+        animes.add("Saint Seiya");
+        animes.add("Steins;Gate");
+        animes.add("Inuyasha");
+        animes.add("Naruto");
+        
+        /*
+        LinkedList Métodos
+        addFirst()
+        addLast()
+        removeFirst()
+        removeLast()
+        getFirst()
+        getLast()
+        */
+        System.out.println("\nLista de Animes");
+        System.out.println(animes);
+        animes.removeFirst();
+        animes.removeLast();
+        System.out.println(animes);
+        animes.addFirst("Digimon");
+        animes.addLast("Yu-gi-oh!");
+        System.out.println(animes);
+        System.out.println("O primeiro anime é: " + animes.getFirst() + "." + " O último anime é: " + animes.getLast());
+        
+        //Lista para ordenar de forma reversa
+        Collections.sort(animes, Collections.reverseOrder());
+        System.out.println(animes);
+        
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(-5);
+        numbers.add(24);
+        numbers.add(9);
+        numbers.add(104);
+        
+        Collections.sort(numbers, Collections.reverseOrder());
+        for (int i : numbers){
+            System.out.println(i);
+        }
+        
+        /*
+        Interface Set é para do Java Collections Framework e é usado para armazenar coleções de elementos únicos
+        Diferente de List, um Set não permite dados duplicados e não preserva a ordem dos elementos (ao menos que use TreeSet, LinkedHashSet)
+        - HashSet é rápido e não ordenado
+        - TreeSet é um conjunto organizado
+        - LinkedHashSet é ordenado por inserção
+        
+        Dica: Use Set quando quiser gravar dados únicos
+        
+        Métodos comuns do Set
+        - add() adiciona elemento no Set
+        - remove() remove elemento do Set
+        - contains() verifica se existe um determinado elemento ou não
+        - size() retorna o tamanho do Set
+        - clear() apaga todos os elementos do Set
+        
+        [List vs Set]
+        List permite valores duplciados, Set não
+        List mantém a ordem, Set não garante a ordem
+        Lista é acessado pelo índice (index), no Set não há acesso pelo índice
+        */
+        String meucarro = "Toyota";
+        System.out.println("Tem o carro " + meucarro + " na minha lista? " + kuruma.contains(meucarro));
+        
+        //Quando a variável é declara como Set (interface), mas armazena um objeto HashSet (o conjunto atual).
+        //Desde que HashSet implementa a interface Set, isto é possível
+        //Funciona do mesmo jeito, mas isso dar´maior flexibilidade para mudança de tipo posterior
+        Set<String> comidas = new HashSet<>();
+        
+        //TreeSet, é um coleção de dados que armazena valores únicos em ordem alfabética.
+        //Uma TreeSet de números TreeSet<Integer> armazena valores em ordem crescente
+        TreeSet<String> games = new TreeSet<>();
+        games.add("Sonic");
+        games.add("Mario");
+        games.add("Crash");
+        games.add("Bomberman");
+        games.add("GTA");
+        games.add("Resident Evil");
+        games.add("God of War");
+        
+        /*
+        HashSet vs TreeSet
+        Ordem não é garantida no HashSet, mas no TreeSet sim
+        Valores duplciadores não são permitidos em ambos
+        Performance é melhor no HashSet já que não se preocupa com ordenação, TreeSet é mais lento pois precisa ordernar
+        
+        Criação junto com Set Interface também funciona
+        */
+        Set<String> jogos = new TreeSet<>();
+        
+        /*
+        LinkedHashSet é uma coleção que armazena elementos únicos e se lembram a ordem que eles foram adicionados
+        Dica: Use LinkedHashSet quando você quiser um conjunto que não permite valores duplicados e mantém a ordem original de inserção
+        */
+        LinkedHashSet<String> gemas = new LinkedHashSet<>();
+        gemas.add("Zircônio");
+        gemas.add("Topázio");
+        gemas.add("Diamante");
+        gemas.add("Rubi");
+        gemas.add("Esmeralda");
+        gemas.add("Âmbar");
+        gemas.add("Safira");
+        
+        //HashSet vs LinkedHashSet é o mesmo que comparado com TreeSet
+        
+        /*
+        Map, HashMap, TreeMap e LinkedHashMap
+        Trabalham com pares de chave-valor, cada chave deve ser única, o valor pode ter duplicações
+        - HashMap é rápido e desordenado
+        - TreeMap é ordenado pela chave
+        - LinkedHashMap é ordenado por inserção
+        
+        Métodos comuns
+        - put() adiciona ou atualiza o par chave-valor
+        - get() retorna o valor de uma chave
+        - remove() retorna a chave e seu valor
+        - containsKey() checa se o Map tem determinada chave
+        - keySet() retorna o conjunto de todas as chaves
+        
+        List vs Set vs Map
+        Permite valor duplicado? [List: Sim | Set: Não | Map Key: Não, Map Valor: Sim]
+        Armazena pares de chave valor? Apenas o Map
+        Mantém a ordem? Apenas a List. Set e Map precisam usar TreeSet ou LinkedHasSet para ordenação
+        */
+        
+        //Exibir as chaves do HashMap
+        for (String i : ddd.keySet()) {
+            System.out.println(i);
+        }
+        
+        //Do mesmo jeito que List e Set, o Map pode armazenar um HashMap
+        Map<String, String> capitais = new HashMap<>();
+        
+        //Diferente do HashMap, o TreeMap irá ordenar de forma alfabética as chaves.
+        TreeMap<String, String> materias = new TreeMap<>();
+        materias.put("MAT", "Matemática");
+        materias.put("POR", "Português");
+        materias.put("ING", "Inglês");
+        materias.put("FIS", "Física");
+        
+        //Exibir Chaves
+        for (String i : materias.keySet()) {
+            System.out.println(i);
+        }
+        
+        //Exibir Valores
+        for (String i : materias.values()) {
+            System.out.println(i);
+        }
+        
+        /*
+        HashMap vs TreeMap
+        No HashMap não garante ordem, no TreeMap garante ordem das chaves
+        No HashMap permite uma chave nula, no TreeMap não permite chaves nulas
+        No HashMap a performance é melhor (já que não ordena), no TreeMap é mais lenta (pois necessita ordenar)
+        
+        Lembrando que, Map pode receber um new TreeMap
+        */
+        Map<String, String> capital = new TreeMap<>();
+        
+        //LinkedHashMap mantém a ordem em que os dados foram inseridos
+        LinkedHashMap<String, String> bandas = new LinkedHashMap<>();
+        bandas.put("A7X", "Avenged Sevenfold");
+        bandas.put("SOAD", "System of a Down");
+        bandas.put("Guns", "Guns 'n' Roses");
+        bandas.put("A7X", "Avenged Sevenfold"); //Valores duplicados são ignorados
+        bandas.put("BFMV", "Bullet for my Valentine");
+        bandas.put("LP", "Linkin Park");
+        
+        //Lembrando que, Map pode receber um new LinkedHashMap
+        Map<String, String> musicas = new LinkedHashMap<>();
+
+        //Lembrando que Iterators podem ser usados para coleções como ArrayList e HashSet
+        ArrayList<String> songs = new ArrayList<>();
+        songs.add("Bat Country");
+        songs.add("Fear of the Dark");
+        songs.add("Chop Suey!");
+        songs.add("Carry On");
+        songs.add("Garçom");
+        songs.add("Welcome to the Jungle");
+        songs.add("The Wind of Change");
+        Iterator<String> sng = songs.iterator();
+        
+        //Loop usando iterator
+        while(sng.hasNext()) { //Faz o loop enquanto tiver elemento
+            String i = sng.next(); //recebe o próximo elemento
+        if(i == "Garçom") {
+            sng.remove(); //remove o elemento caso seja compatível com a condicional
+        }
+      }
     }
 }
