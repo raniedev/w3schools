@@ -39,6 +39,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.regex.PatternSyntaxException;
+import java.util.Comparator;
 /**
  *
  * @author Ranie
@@ -1687,6 +1688,75 @@ public class Java {
          * 
          * Comparators
          * Permite criar uma classe com um método compare() que compara dois objetos para decidir qual irá primeiro na lista
+         * 
+         * O método compare() deve retornar um número na qual é:
+         * - negativo, se o primeiro objeto for o primeiro da lista
+         * - positivo, se o segundo objeto for o primeiro da lista
+         * - zero, se a ordem não importar
+         */
+        
+        ArrayList<Carro> automoveis = new ArrayList<>();
+        automoveis.add(new Carro("Ford Focus", 2020, 80000, true));
+        automoveis.add(new Carro("BYD Dolphin", 2025, 120000, true));
+        automoveis.add(new Carro("Chevrolet Onix", 2023, 67000, false));
+        automoveis.add(new Carro("Honda Civic", 2024, 110000, true));
+        automoveis.add(new Carro("Fiat Uno", 2020, 40000, false));
+        
+        Comparator comparador = new OrdenarPorAno();
+        Collections.sort(automoveis, comparador);
+        
+        System.out.println("\nOrdenar pelo menor ano");
+        for(Carro c : automoveis) {
+            System.out.println("\nModelo: " + c.getModelo() + "\nAno: " + c.getAno() + "\nR$: " + c.getPreco() + "\nTem ar condicionado? " + (c.isTem_ar() ? "Sim" : "Não"));
+        }
+        
+        //Ordernar agora pelo maior e usando Lambda para reduzir código
+        Collections.sort(automoveis, (obj1, obj2) -> {
+            Carro a = (Carro) obj1;
+            Carro b = (Carro) obj2;
+            //Poderia ser também "return a.getAno() - b.getAno();" de forma reduzida
+            if (a.getAno() > b.getAno()) return -1;
+            if (a.getAno() < b.getAno()) return 1;
+            return 0;
+        });
+        
+        System.out.println("\nOrdenar pelo maior ano");
+        for(Carro c : automoveis) {
+            System.out.println("\nModelo: " + c.getModelo() + "\nAno: " + c.getAno() + "\nR$: " + c.getPreco() + "\nTem ar condicionado? " + (c.isTem_ar() ? "Sim" : "Não"));
+        }
+        
+        /**
+         * A interface Comparable
+         * A interface comparable permite um objeto especificar sua própria regra de ordenação com o método compareTo()
+         * O método compareTo() toma um objeto como um argumento e compara com o objeto a ser comparado com o argumento que decide qual deve ir primeiro na lista
+         * 
+         * Igual ao comparador, o método compareTo() retorna um número na qual é:
+         * - negativo, se o primeiro objeto for o primeiro da lista
+         * - positivo, se o segundo objeto for o primeiro da lista
+         * - zero, se a ordem não importar
+         */
+        
+        ArrayList<Car> myCars = new ArrayList<>();
+        myCars.add(new Car("Ford", "Fusion", 2020));
+        myCars.add(new Car("Ford", "Ka", 2015));
+        myCars.add(new Car("Suzuki", "Jimny", 1999));
+        myCars.add(new Car("Jeep", "Renegade", 2023));
+        myCars.add(new Car("Chevrolet", "Cobalt", 2018));
+        myCars.add(new Car("Volkswagen", "Fusca", 1992));
+        myCars.add(new Car("Nissan", "GTR", 2025));
+        
+        Collections.sort(myCars);
+        
+        for(Car c : myCars) {
+            System.out.println("\nMarca: " + c.brand + "\nModelo: " + c.model + "\nAno: " + c.year);
+        }
+        
+        /**
+         * Comparator vs Comparable
+         * Um comparador é um objeto com um método que é usado para comparar dois objetos diferentes
+         * Um comparable é um objeto na qual pode comparar a si mesmo com outros objetos
+         * 
+         * É mais fácil usar a interface Comparable, mas a interface Comparador é mais poderosa porque permite organizar qualquer tipo, mesmo que você não possa mudar o código
          */
     }
 }
