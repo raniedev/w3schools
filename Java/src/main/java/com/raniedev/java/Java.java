@@ -36,6 +36,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.PatternSyntaxException;
 /**
  *
  * @author Ranie
@@ -110,6 +113,29 @@ public class Java {
     somar(5) return 5 + somar(4) = 5 + 10 = 15
     */
     
+    
+    //Métodos genéricos
+    public static <B> void exibirArray(B[] array) {
+        for(B item : array){
+            System.out.println(item);
+        }
+    }
+    
+    @Deprecated
+    static void ola(){
+        System.out.println("Olá");
+    }
+    
+    /*
+    @SuppressWarnings("unchecked") //Sem isso o compilador avisaria sobre operações inseguras com generics
+    @SuppressWarnings("deprecation") //Warning sobre uso do método obsoleto (@Deprecated) é suprimido
+    @SuppressWarnings("unused") //Remove o warning de variável não utilizada
+    @SuppressWarnings("rawtypes") //Uso de tipos genéricos sem parametrização
+    @SuppressWarnings("all") //Suprime todos (não recomendado)
+    */
+    
+    //Se precisar usar mais de um, passe através de chaves
+    @SuppressWarnings({"unused", "deprecation"}) 
     public static void main(String[] args) {
         //Exibir Texto
         System.out.println("Hello");
@@ -1327,9 +1353,340 @@ public class Java {
         //Loop usando iterator
         while(sng.hasNext()) { //Faz o loop enquanto tiver elemento
             String i = sng.next(); //recebe o próximo elemento
-        if(i == "Garçom") {
-            sng.remove(); //remove o elemento caso seja compatível com a condicional
+            if(i == "Garçom") {
+                sng.remove(); //remove o elemento caso seja compatível com a condicional
+            }
         }
-      }
+        
+        /**
+        * Algoritmos são usados para resolver problemas de ordenação, pesquisa e manipulação de estrutura de dados.
+        * Procurar um elemento dentro de um ArrayList
+        */
+        ArrayList<String> desenhos = new ArrayList<>();
+        desenhos.add("Pica-pau");
+        desenhos.add("Flinstones");
+        desenhos.add("Pernalonga");
+        desenhos.add("Frajola");
+        desenhos.add("Danny Phantom");
+        desenhos.add("Tom e Jerry");
+        desenhos.add("Garfield");
+        desenhos.add("Billy e Mandy");
+        desenhos.add("Pink e Cérebro");
+        desenhos.add("Jovens Titans");
+        Collections.sort(desenhos); //primeiramente deve ser ordenado
+        int index = Collections.binarySearch(desenhos, "Garfield");
+        System.out.println("Garfield está no index: " + index);
+        System.out.println(desenhos);
+        
+        /**
+        * Lembrar que a ordem reserva se usa o Collections.sort(list, Collections.reverseOrder())
+        *
+        * Outros algoritmos úteis da bibliotec Collections:
+        * - Collections.max() encontra o maior elemento
+        * - Collections.min() encontra o menor elemento
+        * - Collections.shuffle() aleatoriamente embaralha os elementos
+        * - Collections.frequency() conta quantas vezes um elemento aparece
+        * - Collections.swap() troca dois elementos em uma lista
+        */
+        ArrayList<Float> notas = new ArrayList<>();
+        notas.add(10f);
+        notas.add(7.5f);
+        notas.add(5.5f);
+        notas.add(2f);
+        notas.add(8f);
+        notas.add(10f);
+        notas.add(6.8f);
+        notas.add(7.7f);
+        notas.add(9.5f);
+        notas.add(6.2f);
+        notas.add(10f);
+        notas.add(1.5f);
+        notas.add(6f);
+        
+        System.out.println("\nTodas as notas:");
+        System.out.println(notas);
+        System.out.println("A maior nota foi: " + Collections.max(notas));
+        System.out.println("A menor nota foi: " + Collections.min(notas));
+        Collections.shuffle(notas);
+        System.out.println("As notas foram embaralhadas " + notas);
+        Collections.swap(notas, 0, notas.size() - 1);
+        System.out.println("Trocar o primeiro pelo último ");
+        System.out.println(notas);
+        System.out.println("Quantos 10 tiraram? " + Collections.frequency(notas, 10f));
+        
+        /**
+        * Wrapper Classes prover um jeito de usar tipos de dados primitivos (int, boolean etc) como objetos.
+        * Abaixo está os tipos primitivos e sua wrapper class (basta capitalizar a primeira letra, Integer e Character devem ser escrito por completo)
+        * byte | Byte
+        * short | Short
+        * int | Integer
+        * long | Long
+        * float | Float
+        * double | Double
+        * boolean | Boolean
+        * char | Character
+        *
+        * Criando Objetos Wrapper
+        * Em vez de usar os tipos primitivos, chame a classe Wrapper
+        */
+        Integer inteiro = 13490;
+        Float flutuante = 34.5f;
+        Long longo = 320432042L;
+        Short curto = 342;
+        Double dobro = 9.9999999999d;
+        Character caractere = 'A';
+        Boolean boleano = true;
+        
+        /**
+        * Já que está trabalhando com objetos, você poderá usar métodos para pegar informação sobre um objeto específico
+        * Integer | intValue()
+        * Byte | byteValue()
+        * Short | shortValue()
+        * Long | longValue()
+        * Float | floatValue()
+        * Double | doubleValue()
+        * Character | charValue()
+        * Boolean | booleanValue()
+        */
+        System.out.println(inteiro.toString());
+        
+        /**
+        * Generics permite escrever classes, interfaces e métodos que trabalham com diferentes tipos de dados, sem necessidade de especificar o exato tipo
+        * Torna o código mais flexível, reutilizável e seguro com questão de tipo
+        *
+        * Vantagens:
+        * - Reusabilidade de Código: Escreva uma classe ou método que trabalha com diferentes tipos de dados.
+        * - Segurança de Tipos: Detecte erros de tipo em tempo de compilação, em vez de em tempo de execução.
+        * - Código mais limpo: Não é necessário fazer conversão de tipo ao recuperar objetos.
+        */
+        class Caixa<A> {
+            A valor; //A é um label/espaço reservado para qualquer tipo de dados
+            
+            void set(A valor) {
+                this.valor = valor;
+            }
+            
+            A get() {
+                return valor;
+            }
+        }
+        
+        Caixa<String> caixa1 = new Caixa<>();
+        caixa1.set("livro");
+        System.out.println("Dentro da caixa tem um(a) " + caixa1.get());
+        
+        Caixa<Boolean> caixa2 = new Caixa<>();
+        caixa2.set(false);
+        System.out.println("A caixa está " + (caixa2.get() ? "cheia" : "vazia"));
+        
+        //Métodos Genéricos
+        String[] animais = {"Cachorro", "Gato", "Galinha", "Pato", "Cavalo"};
+        exibirArray(animais);
+        
+        Integer[] megaSena = {10, 20, 30, 40, 50, 60};
+        exibirArray(megaSena);
+        
+        /**
+        * Bounded Type
+        * Pode usar a palavra chave "extends" para limitar os tipos uma classe genérica ou métodos
+        */
+        Integer[] pontuacao = {10, 25, 55, 70, 20, 40, 45, 95, 75, 30, 100, 5, 0, 15};
+        Stats<Integer> meus_pontos = new Stats<>(pontuacao);
+        System.out.println("A média de pontos é de: " + meus_pontos.media());
+        
+        Float[] todas_notas = {5.5f, 7.2f, 10.0f, 2.0f, 3.5f, 6.5f, 6.0f, 8.5f, 8.0f, 9.5f, 1.5f, 3.5f, 7.0f, 8.5f, 10.0f};
+        Stats<Float> minhas_notas = new Stats<>(todas_notas);
+        System.out.println("A média do aluno foi de: " + minhas_notas.media());
+        
+        //Coleções Genéricas, coleções como ArrayList e HashMap são genéricas internamente
+        ArrayList<String> frutas = new ArrayList<>();
+        frutas.add("Ameixa");
+        frutas.add("Pêssego");
+        frutas.add("Banana");
+        frutas.add("Maçã");
+        frutas.add("Melancia");
+        frutas.add("Kiwi");
+        String fruta = frutas.get(0); //não é necessário castar
+        
+        /** 
+         * Anotações
+         * São notas especiais que você pode adicionar ao código Java. Elas começam com o símbolo de arroba @
+         * Eles não interferem na execução do programa, dão informações extras para o compilador e outras ferramentas
+         * Aqui está uma das mais usadas:
+         * @Override, indica uma sobreescrita de método de uma superclasse
+         * @Deprecated, marca um método como código descontinuado e não recomendando para ser mais usado
+         * @SupressWarnings, diz ao compilador para ignorar certos alertas
+         * 
+         * RegEx (Regular Expressions)
+         * É uma sequência de caracteres que formam um padrão de pesquisa. 
+         * Uma expressão regular pode ser de apenas um caractere ou de forma mais complexa.
+         * Podem ser utilizadas para pesquisas ou operações de substituição de texto
+         * 
+         * Java não possui uma classe própria para RegEx, é necessário importar o pacote java.util.regex para trabalhar com expressões regulares
+         * Este pacote contém as seguintes classes:
+         * - Pattern, define o padrão a ser usado na pesquisa
+         * - Matcher, usada para procurar pelo padrão
+         * - PatternSyntaxException, indica erro de sintaxe em um padrão de uma expressão regular
+         */
+        
+        // Palavra e como segundo paramentro uma informação que aceitr qualquer tipo de capitalização
+        // exs.: (Brasil, brasil, BRASIL, BRasil etc), palavras com acentuação não serão encontradas exs.: (Brásil, brâsil etc)
+        Pattern padrao = Pattern.compile("Brasil", Pattern.CASE_INSENSITIVE); 
+        Matcher procurar = padrao.matcher("Entre outras mil és tu Brásil, ó pátria amada!");
+        boolean encontrou = procurar.find();
+        System.out.println("Palavra " + (encontrou ? "encontrada" : "não encontrada"));
+        
+        /**
+         * Flags
+         * Pattern.CASE_INSENSITIVE, como explicdo anteriormente, vai achar a palavra com capitalizações diferentes
+         * Pattern.LITERAL, desativa caracteres do RegEx para evitar conflitos ex.: [0-9] seria do número 0 até 9, mas usando o .LITERAL "0-9" estaria procurando justamente 0-9
+         * Pattern.UNICODE_CASE, não funciona sozinho, expande o CASE_INSENSITIVE para caracteres Unicode com acentuações, letras não-latinas etc
+         */
+        
+        Pattern padrao2 = Pattern.compile("á", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+        Matcher procurar2 = padrao2.matcher("KLWMpmsduiqÁbqndner");
+        boolean encontrou2 = procurar2.find();
+        System.out.println("Palavra " + (encontrou2 ? "encontrada" : "não encontrada"));
+        
+        /**
+         * Padrões RegEx
+         * [abc] Encontra qualquer um dos caracteres passado entre colchetes. (ex.: Abacate, os caracteres "baca" dão match)
+         * [^abc] Encontrar qualquer caractere que for diferente do passado entre colchetes (ex.: Abacate, os caracteres "Ate" dão match)
+         * [0-9] Encontrar ao menos um caractere que esteja eem um range (neste caso de 0 até 9) (ex.: 22 de Abril de 1500, os números 221500 dão match)
+         * [^0-9] Não números
+         * [a-z] Letras minúsculas (sem acentuações)
+         * [A-Z] Letras maiúsculas (sem acentuações)
+         * [a-z|A-Z] Todas as letras (sem acentuações)
+         * (a-z) só dá match com "a-z"
+         * alun(o|a) só dará match com "aluno" ou "aluna"
+         * 
+         * Metacaracteres
+         * $ Encontra uma palavra que está sempre ao final de um texto, considere que não é apenas o final da string, a cada Enter um "final" de texto é criado
+         * . Encontra um fragmento de palavra que será complementado, onde estiver ponto pode ser qualquer coisa, como em um jogo da forca (ex.: .ato dará match em gato, pato, fato etc (ou qualquer coisa que não tenha sentido, como vato, Wato, @ato etc)
+         * \ Pode ser utilizada para escape, por exemplo, \. para representar que desejo procurar realmente um ponto, em vez do RegEx ententar como o ponto de qualquer caractere
+         * \d representa um dígito, \d{3} representa 3 dígitos juntos, \d{3}-\d{3}-\d{3} representa três sequências de 3 digitos e a cada 3 dígitos um traço como seperador (ex.: 123-456-789 dará match)
+         * \D não dígito
+         * \w letra, número ou _
+         * \W negação de \w
+         * \s representa os espaços (space), amigo\sdo (ex.: dará match em "amigo do")
+         * \S o que não for espaço
+         * \b representa encontrar uma palavra que se inicia ou termina. ela\b (ex.: Bela irá dar match, elaine não irá dar match)
+         * \\uxxxx Note que: duas barras neste caso é para evitar erro no Java, xxxx é o código do unicode. (ex.: \u00e7 = ç)
+         * 
+         * Quantificadores
+         * Definem quantas vezes um padrão pode aparecer
+         * asterísco *      0 ou mais (ex.: abc* vai dar match com: ab, abc, abcc, abccc etc)
+         * adição +         1 ou mais (ex.: abc+ vai dar match com: abc, abcc, abccc etc)
+         * interrogação ?   0 ou 1 (ex.: abc? vai dar match com: ab e abc apenas)
+         * {n}              exatamente n
+         * {n,}             pelo menos n
+         * {n,m}            entre n e m
+         * 
+         * Flags
+         * (?i) Case insensitive, não importa se é maiúscula ou minúscula
+         * (?u) Unicode, ativa a codificação unicode
+         * (?iu) Combinando Case insensitive com Unicode
+         * (?m) Multiline, faz com que o ^ e $ funcionem por linha e não apenas no início/fim da string. (ex.: (?m)^erro
+         * (?s) Dotall (Single Line), faz com que o . também dê match com quebra de linha
+         * (?x) Comments / Free-spacing
+         * (?U) Ungreedy
+         */
+        
+        Pattern padrao3 = Pattern.compile("[0-9]", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+        Matcher procurar3 = padrao3.matcher("abcdef4gh");
+        boolean encontrou3 = procurar3.find();
+        System.out.println("Palavra " + (encontrou3 ? "encontrada" : "não encontrada"));
+        
+        /**
+         * Java Threads
+         * Permite que um programa de modo eficiente fazendo multi-tarefas
+         * Threads podem ser usadas para melhor performance de tarefas complexas, são executadas em background sem interromper o programa principal
+         * 
+         * Criando uma Thread
+         * Há dois jeitos de se criar uma thread
+         * 1) Usando extends Thread e sobreescrevendo com o método run()
+         * public class Main extends Thread {
+         *      public void run() {
+         *          System.out.println("Este código está sendo executado em uma Thread.");
+         *      }
+         * }
+         * 
+         * 2) Implementando a interface Runnable
+         * public class Main implements Runnable {
+         *      public void run() {
+         *          System.out.println("Este código está sendo executado em uma Thread.");
+         *      }
+         * }
+         * 
+         * Executando uma Thread
+         * 1) Através do extends Thread basta criar uma instância da class Main e chamar o método start()
+         * Main thread = new Main();
+         * thread.start();
+         * 
+         * 2) Através do implements Runnable deve-se executar passando a instância da classe para um objeto construtor da Thread e só depois chamar o método start()
+         * Main objeto = new Main();
+         * Thread thread = new Thread(objeto)
+         * thread.start();
+         * 
+         * ATENÇÃO! Concurrency Problems
+         * Quando threads são executadas ao mesmo tempo que outras partes do programa, não há como saber a ordem do código do programa.
+         * Quando o programa principal juntamente com as threads estão utilizando as mesma variáveis para leitur e escrita, pode acontecer imprecisões de dados que é chamado de concurrency problems.
+         *
+         * Neste exemplo, o valor de amount é impreciso
+         * public class Main extends Thread {
+         *      public static int amount = 0;
+         *      
+         *      public static void main(String[] args) {
+         *          Main thread = new Main();
+         *          thread.start();
+         *          System.out.println(amount);
+         *          amount++;
+         *          System.out.println(amount);
+         *      }
+         *      public void run() { amount++; }
+         * }
+         * 
+         * Para evitar o problema de concorrência, é melhor compartilhar o menos possível atributos entre threads e a execução principal
+         * Caso seja realmente necessário compartilhar, uma solução possível é utilizar o método isAlive() para checar se a execucação da thread está ativa ou não
+         * Assim, o programa irá esperar a thread finalizar o que tiver para fazer para continuar seu processo
+         * public class Main extends Thread {
+         *      public static int amount = 0;
+         *      
+         *      public static void main(String[] args) {
+         *          Main thread = new Main();
+         *          thread.start();
+         *          
+         *          // Esperando a thread finalizar sua tarefa
+         *          while(thread.isAlive()) {
+         *              System.out.println("Aguardando...");
+         *          }
+         *          // Continua o programa
+         *          System.out.println("Main: " + amount);
+         *          amount++;
+         *          System.out.println("Main: " + amount);
+         *      }
+         *      public void run() { amount++; }
+         * }
+         * 
+         * 
+         * Expressões Lambda
+         * As expressões lambda foram implementadas no Java 8, é bloco de código curto que passa a estrutura de "parâmetros -> expressão de retorno"
+         * Lambda é um método sem nome, e elas podem ser escrita até mesmo no corpo de um método convencional
+         */
+        
+        ArrayList<Integer> meus_num = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(1);
+        numbers.add(9);
+        numbers.add(7);
+        meus_num.forEach((n) -> { System.out.println(n); });
+        
+        /**
+         * Ordenação Avançada do Java
+         * As interfaces Comparator e Comparable permitem especificar que regra é usada para organizar objetos
+         * 
+         * Comparators
+         * Permite criar uma classe com um método compare() que compara dois objetos para decidir qual irá primeiro na lista
+         */
     }
 }
