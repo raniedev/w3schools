@@ -1,0 +1,13 @@
+code {
+    padding: 1px;
+    background-color: #eee;
+    color: crimson;
+    border-radius: 2px;
+}
+
+.caixa {
+    padding: 5px;
+    background-color: #444;
+    color: #fff;
+    border-left: 4px solid crimson;
+}

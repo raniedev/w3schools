@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>W3Schools - JavaScript</title>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Introdução</h1>
+        <small><a href="index.html">← Voltar</a></small>
+        <h2>Mudar Conteúdo HTML</h2>
+        <p>Um dos principais métodos do JavaScript é o <code>getElementById()</code>, que recebe um elemento <code>id="nome_id"</code> do HTML e o modifica. Essas mudanças ocorrerão através do evento <code>onClick=""</code></p>
+        <p id="demo">JavaScript modifica o conteúdo do HTML</p>
+        <button type="button" onclick="document.getElementById('demo').innerHTML = '<b>O conteúdo mudou através do JavaScript. Sofre efeito de tags HTML. \nNão quebra linhas.</b>'">Aplicar innerHTML</button>
+
+        <h2>Mudar Valores de Atributo</h2>
+        <button type="button" onclick="document.getElementById('lampada').src='imgs/lampada-on.png'">Ligar</button>
+        <img id="lampada" src="imgs/lampada-off.png"></button>
+        <button type="button" onclick="document.getElementById('lampada').src='imgs/lampada-off.png'">Desligar</button>
+
+
+        <h2>Mudar HTML Style (CSS)</h2>
+        <p id="texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis, velit.</p>
+        <button type="button" onclick="document.getElementById('texto').style.fontSize = '24px';">+ Ampliar</button>
+        <button type="button" onclick="document.getElementById('texto').style.fontSize = '16px';">- Reduzir</button>
+
+        <h2>Esconder Elementos</h2>
+        <p id="esconder">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, vero?</p>
+        <button type="button" onclick="esconderParagrafo()">Esconder</button>
+        <button type="button" onclick="mostrarParagrafo()">Mostrar</button>
+
+        <h2>Tipos de escritas do JavaScript</h2>
+        <ul>
+            <li>No elemento HTML, usando <code>innerHTML<sup>1</sup></sup></code>, <code>innerText</code> ou <code>textContent</code></li>
+            <li>Na saída HTML, usando <code>document.write()</code></li>
+            <li>Na caixa de alerta (alert box), usando <code>window.alert()</code></li>
+            <li>No console do navegador (browser), usando <code>console.log</code></li>
+            <li>Impressão da página, usando <code>window.print()</code></li>
+        </ul>
+
+        <div class="caixa">
+            <ol>
+                <li>innerHTML pode abrir portas para ataques do tipo Cross-Site Scripting (XSS), onde quem ataca injeta e executa código script malicioso.</li>
+            </ol>
+        </div>
+
+        <h3>innerHTML vs. innerText vs. textContent</h3>
+        <ul>
+            <li><code>innerHTML</code> considera as tags HTML, retornam os conteúdos com marcação e pode inserir novos conteúdos HTML.</li>
+            <li><code>innerText</code> e <code>textContent</code> ignoram as tags HTML, o que evita risco de ataques XSS, alé de considerar espaços e quebras de linhas. </li>
+            <li><code>innerText</code> respeita o CSS, como <code>style="white-space: pre"</code>. Descarta textos ocultos do CSS.</li>
+            <li><code>innerHTML</code> e <code>textContent</code> consideram textos ocultos, que são códigos sem visibilidade <code>display: none;</code>, <code>visibility: hidden;</code></li>
+        </ul>
+        
+        <p>
+            innerHTML <i>“Qual é o HTML aqui dentro?”</i> <br>       
+            innerText <i>“O que o usuário está vendo?”</i><br>
+            textContent <i>“O que existe no DOM?”</i>
+        </p>
+
+        <h3>innerText</h3>
+        <p id="inner-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, assumenda.</p>
+        <button type="button" onclick="document.getElementById('inner-text').innerText = '<b>Não sofre efeito de nenhuma tag HTML. \nAplica quebra de linhas.</b>'">Aplicar innerText</button>
+
+        <h3>document.writer()</h3>
+        <p>Irá substituir todo o conteúdo atual do HTML</p>
+        <button type="button" onclick="document.write('Escrevendo pelo document.write(), substituiu todo conteúdo anterior')">Aplicar document.write()</button>
+
+        <h3>window.alert()</h3>
+        <!-- Pode ser simplesmente alert(), lembrando que o uso de alerts não é muito recomendado, só em último caso e com bastante moderação -->
+        <button type="button" onclick="window.alert('Escrevendo em uma caixa de alerta!')">Aplicar window.alert()</button>
+
+        <h3>console.log()</h3>
+        <button type="button" onclick="console.log('Escrevendo no console do browser.')">Aplicar console.log()</button>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
