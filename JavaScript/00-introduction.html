@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         <title>W3Schools - JavaScript</title>
+        <meta charset="utf-8">
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
@@ -72,6 +73,17 @@
         <h3>console.log()</h3>
         <button type="button" onclick="console.log('Escrevendo no console do browser.')">Aplicar console.log()</button>
 
-        <script src="js/script.js"></script>
+        <h3>window.print()</h3>
+        <button type="button" onclick="window.print()">Imprimir página</button>
+
+        <script>
+            function esconderParagrafo() {
+                document.getElementById('esconder').style.display = 'none';
+            }
+
+            function mostrarParagrafo() {
+                document.getElementById('esconder').style.display = 'block';
+            }
+        </script>
     </body>
 </html>
