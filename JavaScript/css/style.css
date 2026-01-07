@@ -11,3 +11,16 @@ code {
     color: #fff;
     border-left: 4px solid crimson;
 }
+
+#nissan-gtr {
+    width: 400px;
+}
+
+table, th, td {
+    border: solid 1px black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
