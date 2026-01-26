@@ -18,6 +18,10 @@ code {
     color: plum;
 }
 
+.caixa p {
+    margin-left: 10px;
+}
+
 #nissan-gtr {
     width: 400px;
 }
