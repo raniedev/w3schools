@@ -339,6 +339,7 @@ console.log(tipo);
 // Esta restrição está vinculada ao mecanismo de coleta de lixo;
 // Primitivos não são lixo coletado da mesma forma que objetos
 
+
 //Trackeando Objetos (Visitantes)
 let text = "";
 
