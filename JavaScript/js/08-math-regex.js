@@ -144,7 +144,6 @@ console.log(trocarTodos);
 
 //split(), retorna um array com os resultados
 
-
 //RexExp Alternation (OR), 
 let rslt2 = (lema.search(/verde|amarelo|laranja/g));
 console.log(rslt2);
@@ -213,9 +212,9 @@ let match8 = barraM.multiline;
 console.log("Regex Flag /m");
 console.log(match8);
 
-/**
- * 
- * RexExp Metacaracteres
+/** RexExp Metacaracteres
+ * a|b = Matches a or b
+ * . = Matches any (wildcard) character except line terminators
  * \d = dígito/número
  * \D = não dígito
  * \w = palavras (seja letra, dígito e underscore)
@@ -224,9 +223,14 @@ console.log(match8);
  * \S = não espaço
  * \n = quebra de linha
  * \t = tab
+ * \r = carriage return
  * \ddd = octal number ddd
  * \xhh = hexadecimal number hh
  * \uhhhh = hex number hhhh
+ * [\b] = matches backspace characters
+ * \0 = null characters
+ * \p{} = matches characters with given Unicode Property
+ * \P{} = matches characters NOT with given Unicode Property
  */
 
 let texto = "Vendo este carro por R$ 39000, este é o CARRO! É extremamente rápido.";
@@ -242,9 +246,13 @@ let resultado2 = texto.match(letra); //todos as palavras
 console.log(resultado2);
 
 // RegExp Quantificadores
+// Quantificadores definem o número de caracteres ou expressões à combinar
 // + um ou mais
 // * zero ou mais
 // ? zero ou um
+// {n} n ocorrências
+// {n, m} cria uma range de n para m ocorrências
+// {n,} deixando vazio, fica n ou mais ocorrências
 const umaOuMais = /a+/i;
 const zeroOuMais = /carro*/ig;
 const zeroOuUma = /este?/i;
@@ -306,14 +314,18 @@ for(let t of todos){
 // [^a-z], negação de letras minúsculas de a até z
 // [A-Z], letras maiúsculas de A até Z
 // [A-Z], negação de letras maiúsculas de A até Z
-let texto2 = "BRASIL foi 5 vezes campeão da copa do mundo.";
+let texto2 = "BRASIL foi 5 vezes campeão da copa do mundo, foi pentacampeão em 2002.";
 let minuscula = /[a-z]/;
 let maiuscula = /[A-Z]/;
 let num = /[0-9]/;
+let quatroDigitos = /\d{4}/g;
+let de2ate4 = /\d{2,4}/g;
+let de2emdiante = /\d{2,}/g;
 
 console.log(texto2.match(maiuscula));
 console.log(texto2.match(minuscula));
 console.log(texto2.match(num));
+console.log(texto2.match(quatroDigitos));
 
 // RegExp Lookahead
 // x(?=y) combina "x" se "x" é seguido pela string "y"
@@ -358,3 +370,75 @@ const lookahead4 = /(?i:w3schools) tutorials/;
 // Returns true:
 let resultado8 = lookahead4.test(texto8);
 console.log(resultado8);
+
+// Método RegExp.escape()
+// Isso torna possível tratar caracteres como +, *, ?, ^, $, (, ), [, ], {, }, | e \ literalmente, 
+// e não como parte de uma expressão regular.
+
+// Escape a text for to use as a regular expression
+const safe = RegExp.escape("[*]");
+// Build a new reglar expression
+const rgx = new RegExp(safe);
+// Text to replace within
+const oldText = "[*] is a web school.";
+// Perform the replace
+const newText = oldText.replace(rgx, "W3Schools");
+
+// Outros Métodos
+// Constructor, the constructor property returns the function that created the RegExp prototype
+let pattern_1 = /Hello World/g;
+let text = pattern_1.constructor;
+
+// dotAll
+// The dotAll property returns true if the /s flag is set.
+const pattern_2 = /W3Schools/s;
+let result_2 = pattern_2.dotAll;
+
+// flags
+// The flag property returns the flags set in a regular expression.
+const pattern_3 = /W3Schools/gi;
+let result_3 = pattern_3.flags;
+
+// global
+// The global property returns true if the /g flag is set, otherwise false
+
+
+// hasIndices
+// The hasIndices property returns true if the /d flag is set.
+const pattern_4 = /W3Schools/d;
+let result_4 = pattern_4.hasIndices;
+
+// ignoreCase
+// The ignoreCase property returns true if the /i flag is set.
+let pattern_5 = /ws3/i;
+let result_5 = pattern_5.ignoreCase;
+
+// multiline
+// The multiline property returns true if the /m flag is set, otherwise false
+let pattern_6 = /W3S/gi;
+let result_6 = pattern_6.multiline;
+
+// source
+// The source property returns the text of a RegExp pattern
+let pattern_7 = /W3S/gi;
+let result_7 = pattern_7.multiline;
+
+// sticky
+// The sticky property returns true if the /y flag is set.
+const pattern_8 = /W3Schools/y;
+let result_8 = pattern_8.sticky;
+
+// toString
+// toString() returns the string value of a RegExp object
+let pattern_9 = new RegExp("Hello World", "g");
+let text_9 = pattern_9.toString();
+
+// unicode
+// The unicode property returns true if the /u flag is set
+const pattern_10 = /W3Schools/;
+let result_10 = pattern_10.unicode;
+
+// unicodeSets
+// The unicodeSets property returns true if the /v flag is set
+const pattern_11 = /W3Schools/;
+let result_11 = pattern_11.unicodeSets;
